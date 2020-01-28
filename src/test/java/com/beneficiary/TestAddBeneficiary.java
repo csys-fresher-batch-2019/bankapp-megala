@@ -1,37 +1,49 @@
 package com.beneficiary;
 
+import java.util.Scanner;
+
 import beneficiary.Beneficiary;
-import beneficiary.BeneficiaryDAOImpl;
+import beneficiary.BeneficiaryDAO;
+import daoFactory.DAOFactory;
+import logger.Logger;
 
 public class TestAddBeneficiary {
+	private static final Logger LOGGER=Logger.getInstance();
 
 	public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub
 		Beneficiary b1=new Beneficiary();
-		b1.beneficiaryName="dhiya";
-		b1.accNo=11188;
-		b1.iFSCCode="64564674FG";
+		Scanner s=new Scanner(System.in);
+		LOGGER.getInput("Enter beneficiary name:");
+		b1.setBeneficiaryName(s.next());
+		LOGGER.getInput("Enter beneficiary accNo:");
+		b1.setAccNo(s.nextInt());
+		LOGGER.getInput("Enter IFSC code:");
+		b1.setiFSCCode(s.next());
 		
 		
 		Beneficiary b2=new Beneficiary();
-		b2.beneficiaryName="shree";
-		b2.accNo=11166;
-		b2.iFSCCode="657656GJK";
+		LOGGER.getInput("Enter beneficiary name:");
+		b2.setBeneficiaryName(s.next());
+		LOGGER.getInput("Enter beneficiary accNo:");
+		b2.setAccNo(s.nextInt());
+		LOGGER.getInput("Enter IFSC code:");
+		b2.setiFSCCode(s.next());
 		
 		Beneficiary b3=new Beneficiary();
-		b3.beneficiaryName="prabhu";
-		b3.accNo=11177;
-		b3.iFSCCode="1642FG";
+		LOGGER.getInput("Enter beneficiary name:");
+		b3.setBeneficiaryName(s.next());
+		LOGGER.getInput("Enter beneficiary accNo:");
+		b3.setAccNo(s.nextInt());
+		LOGGER.getInput("Enter IFSC code:");
+		b3.setiFSCCode(s.next());
 		
-		BeneficiaryDAOImpl daoImpl1=new BeneficiaryDAOImpl();
-		daoImpl1.addBeneficiary(b1);
+		BeneficiaryDAO dao=DAOFactory.getBeneficiaryDAO();
+		dao.addBeneficiary(b1);
+		dao.addBeneficiary(b2);
+		dao.addBeneficiary(b3);
 		
-		BeneficiaryDAOImpl daoImpl2=new BeneficiaryDAOImpl();
-		daoImpl2.addBeneficiary(b2);
-		
-		BeneficiaryDAOImpl daoImpl3=new BeneficiaryDAOImpl();
-		daoImpl3.addBeneficiary(b3);
-
+		s.close();
 
 	}
 

@@ -1,13 +1,15 @@
 package com.account;
 
-import account.AccountDAOImpl;
+import daoFactory.DAOFactory;
+import logger.Logger;
 
 import java.util.Scanner;
 
 import account.Account;
+import account.AccountDAO;
 
 public class TestAddAccount {
-
+	private static final Logger LOGGER=Logger.getInstance();
 	public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub
 //		Account b1=new Account();
@@ -18,36 +20,40 @@ public class TestAddAccount {
 		
 		Account b1=new Account();
 		Scanner s=new Scanner(System.in);
-		System.out.println("Enter customerId:");
-		b1.customerId=s.nextInt();
-		System.out.println("Enter accNo:");
-		b1.accNo=s.nextInt();
-		System.out.println("Enter accType:");
-		b1.accType=s.next();
-		System.out.println("availableBalance:");
-		b1.availableBalance=s.nextInt();
+		LOGGER.getInput("Enter customerId:");
+		b1.setCustomerId(s.nextInt());
+		LOGGER.getInput("Enter accNo:");
+		b1.setAccNo(s.nextInt());
+		LOGGER.getInput("Enter accType:");
+		b1.setAccType(s.next());
+		LOGGER.getInput("Enter availableBalance:");
+		b1.setAvailableBalance(s.nextInt());
 		
 		Account b2=new Account();
-		b2.customerId=2;
-		b2.accNo=11166;
-		b2.accType="salaried";
-		b2.availableBalance=20000;
+		LOGGER.getInput("Enter customerId:");
+		b2.setCustomerId(s.nextInt());
+		LOGGER.getInput("Enter accNo:");
+		b2.setAccNo(s.nextInt());
+		LOGGER.getInput("Enter accType:");
+		b2.setAccType(s.next());
+		LOGGER.getInput("availableBalance:");
+		b2.setAvailableBalance(s.nextInt());
 		
 		Account b3=new Account();
-		b3.customerId=1;
-		b3.accNo=11177;
-		b3.accType="saving";
-		b3.availableBalance=54000;
+		LOGGER.getInput("Enter customerId:");
+		b3.setCustomerId(s.nextInt());
+		LOGGER.getInput("Enter accNo:");
+		b3.setAccNo(s.nextInt());
+		LOGGER.getInput("Enter accType:");
+		b3.setAccType(s.next());
+		LOGGER.getInput("availableBalance:");
+		b3.setAvailableBalance(s.nextInt());
 		
-		AccountDAOImpl daoImpl1=new AccountDAOImpl();
-		daoImpl1.addAccount(b1);
-		
-		AccountDAOImpl daoImpl2=new AccountDAOImpl();
-		daoImpl2.addAccount(b2);
-		
-		AccountDAOImpl daoImpl3=new AccountDAOImpl();
-		daoImpl3.addAccount(b3);
-
+		AccountDAO dao=DAOFactory.getAccountDAO();
+		dao.addAccount(b1);
+		dao.addAccount(b2);
+		dao.addAccount(b3);
+		s.close();
 	}
 
 }

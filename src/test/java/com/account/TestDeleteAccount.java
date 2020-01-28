@@ -1,13 +1,22 @@
 package com.account;
 
-import account.AccountDAOImpl;
+import java.util.Scanner;
+
+import account.AccountDAO;
+import daoFactory.DAOFactory;
+import logger.Logger;
 
 public class TestDeleteAccount {
+	private static final Logger LOGGER=Logger.getInstance();
 
 	public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub
-		AccountDAOImpl daoImpl=new AccountDAOImpl();
-		daoImpl.deleteAccount(11177);
+		Scanner s=new Scanner(System.in);
+		LOGGER.getInput("Enter customerId:");
+		int id=s.nextInt();
+		AccountDAO dao=DAOFactory.getAccountDAO();
+		dao.deleteAccount(id);
+		s.close();
 
 	}
 

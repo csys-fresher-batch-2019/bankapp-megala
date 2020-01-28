@@ -1,13 +1,14 @@
 package com.beneficiary;
 
-import beneficiary.BeneficiaryDAOImpl;
+import beneficiary.BeneficiaryDAO;
+import daoFactory.DAOFactory;
 
 public class TestDisplayBeneficiary {
 
 	public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub
-		BeneficiaryDAOImpl daoImpl3=new BeneficiaryDAOImpl();
-		daoImpl3.displayBeneficiary();
+		BeneficiaryDAO dao=DAOFactory.getBeneficiaryDAO();
+		dao.displayBeneficiary();
 	}
 
 }

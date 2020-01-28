@@ -1,13 +1,22 @@
 package com.account;
 
-import account.AccountDAOImpl;
+import java.util.Scanner;
+
+import account.AccountDAO;
+import daoFactory.DAOFactory;
+import logger.Logger;
 
 public class TestDisplayBalance {
+	private static final Logger LOGGER=Logger.getInstance();
 
 	public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub
-		AccountDAOImpl daoImpl=new AccountDAOImpl();
-		daoImpl.displayBalance(11188);
+		Scanner s=new Scanner(System.in);
+		LOGGER.getInput("Enter accNo:");
+		int accNo=s.nextInt();
+		AccountDAO dao=DAOFactory.getAccountDAO();
+		dao.displayBalance(accNo);
+		s.close();
 	}
 
 }

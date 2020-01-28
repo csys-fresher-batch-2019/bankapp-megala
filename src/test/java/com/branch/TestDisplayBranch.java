@@ -1,13 +1,14 @@
 package com.branch;
 
-import branch.BranchDAOImpl;
+import branch.BranchDAO;
+import daoFactory.DAOFactory;
 
 public class TestDisplayBranch {
 
 	public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub
-		BranchDAOImpl daoImpl = new BranchDAOImpl();
-		daoImpl.list();
+		BranchDAO dao = DAOFactory.getBranchDAO();
+		dao.list();
 
 	}
 

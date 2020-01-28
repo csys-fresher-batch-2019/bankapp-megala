@@ -4,20 +4,22 @@ import java.util.Scanner;
 
 import customer.Customer;
 import customer.CustomerDAOImpl;
+import logger.Logger;
 
 public class TestAddCustomer {
+	private static final Logger LOGGER=Logger.getInstance();
 
 	public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub
 		Customer b1=new Customer();
 		Scanner s1=new Scanner(System.in);
-		System.out.println("Enter customerId:");
+		LOGGER.getInput("Enter customerId:");
 		b1.id=s1.nextInt();
-		System.out.println("Enter customerName:");
+		LOGGER.getInput("Enter customerName:");
 		b1.name=s1.next();
-		System.out.println("Enter customerStreet:");
+		LOGGER.getInput("Enter customerStreet:");
 		b1.street=s1.next();
-		System.out.println("Enter customerCity:");
+		LOGGER.getInput("Enter customerCity:");
 		b1.city=s1.next();
 		
 		Customer b2=new Customer();

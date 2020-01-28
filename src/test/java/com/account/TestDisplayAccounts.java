@@ -1,13 +1,14 @@
 package com.account;
 
-import account.AccountDAOImpl;
+import account.AccountDAO;
+import daoFactory.DAOFactory;
 
 public class TestDisplayAccounts {
 
 	public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub
-		AccountDAOImpl daoImpl=new AccountDAOImpl();
-		daoImpl.displayAccount1(3);
+		AccountDAO dao=DAOFactory.getAccountDAO();
+		dao.displayAccount1(3);
 
 	}
 

@@ -18,9 +18,9 @@ public class BeneficiaryDAOImpl implements BeneficiaryDAO {
 		try {
 			Connection con = ConnectionUtil.getconnection();
 			PreparedStatement pst = con.prepareStatement(sql);
-			pst.setString(1, beneficiary.beneficiaryName);
-			pst.setInt(2, beneficiary.accNo);
-			pst.setString(3, beneficiary.iFSCCode);
+			pst.setString(1, beneficiary.getBeneficiaryName());
+			pst.setInt(2, beneficiary.getAccNo());
+			pst.setString(3, beneficiary.getiFSCCode());
 			int rows = pst.executeUpdate();
 			System.out.println("no of rows inserted:" + rows);
 		} catch (SQLException e) {

@@ -2,17 +2,21 @@ package com.branch;
 
 import java.util.Scanner;
 
-import branch.BranchDAOImpl;
+import branch.BranchDAO;
+import daoFactory.DAOFactory;
+import logger.Logger;
 
 public class TestUpdateBranch {
+	private static final Logger LOGGER = Logger.getInstance();
 	public static void main(String[] args) throws Exception {
 		Scanner s=new Scanner(System.in);
-		System.out.println("Enter branchName:");
+		LOGGER.getInput("Enter branchName:");
 		String name=s.nextLine();
-		System.out.println("Enter branchId:");
+		LOGGER.getInput("Enter branchId:");
 		int id=s.nextInt();
-		BranchDAOImpl dao = new BranchDAOImpl();
+		BranchDAO dao = DAOFactory.getBranchDAO();
 		dao.updateBranch(name,id);
+		s.close();
 
 	}
 }

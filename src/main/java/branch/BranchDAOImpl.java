@@ -9,8 +9,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import bank.util.ConnectionUtil;
+import logger.Logger;
 
 public class BranchDAOImpl implements BranchDAO {
+	private static final Logger LOGGER = Logger.getInstance();
 
 	public void addBranch(Branch branch) throws Exception {
 		String sql = "insert into branch(branch_id,branch_name,branch_city)values(?,?,?)";
@@ -40,13 +42,13 @@ public class BranchDAOImpl implements BranchDAO {
 		Connection con = ConnectionUtil.getconnection();
 		Statement stmt = con.createStatement();
 		ResultSet rows = stmt.executeQuery(sql);
-		System.out.println("No of rows displyed:"+rows);
+		//System.out.println("No of rows displyed:"+rows);
 
 		while (rows.next()) {
 			int id = rows.getInt("branch_id");
 			String name = rows.getString("branch_name");
 			String city = rows.getString("branch_city");
-
+			LOGGER.debug("id:"+id+",name:"+name+",city:"+city);
 //			System.out.println(id);
 //			System.out.println(name);
 //			System.out.println(city);

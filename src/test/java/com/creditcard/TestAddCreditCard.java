@@ -1,44 +1,59 @@
 package com.creditcard;
 import java.time.LocalDate;
+import java.util.Scanner;
 
 import creditcard.CreditCard;
-import creditcard.CreditCardDAOImpl;
+import creditcard.CreditCardDAO;
+import daoFactory.DAOFactory;
+import logger.Logger;
 
 
 public class TestAddCreditCard {
+
+	private static final Logger LOGGER = Logger.getInstance();
 
 	public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub
 
 			CreditCard c1 = new CreditCard();
-			LocalDate expiryDate = LocalDate.parse("2020-10-21");
-			c1.creditCardNo = 121198;
-			c1.accNo = 11188;
-			c1.limitNo = 1000;
-			c1.expiryDate = expiryDate;
-
+			Scanner s=new Scanner(System.in);
+			LocalDate expiryDate = LocalDate.parse(s.next());
+			LOGGER.getInput("Enter creditCardNo:");
+			c1.setCreditCardNo(s.nextInt());
+			LOGGER.getInput("Enter accNo:");
+			c1.setAccNo(s.nextInt());
+			LOGGER.getInput("Enter limitNo:");
+			c1.setLimitNo(s.nextInt());
+			LOGGER.getInput("Enter expiryDate:");
+			c1.setExpiryDate(expiryDate);
+			
 			CreditCard c2 = new CreditCard();
-			LocalDate expiryDate1 = LocalDate.parse("2020-11-01");
-			c2.creditCardNo = 111119;
-			c2.accNo = 11166;
-			c2.limitNo = 5000;
-			c2.expiryDate = expiryDate1;
+			LocalDate expiryDate1 = LocalDate.parse(s.next());
+			LOGGER.getInput("Enter creditCardNo:");
+			c2.setCreditCardNo(s.nextInt());
+			LOGGER.getInput("Enter accNo:");
+			c2.setAccNo(s.nextInt());
+			LOGGER.getInput("Enter limitNo:");
+			c2.setLimitNo(s.nextInt());
+			LOGGER.getInput("Enter expiryDate:");
+			c2.setExpiryDate(expiryDate1);
 
 			CreditCard c3 = new CreditCard();
-			LocalDate expiryDate2 = LocalDate.parse("2022-12-12");
-			c3.creditCardNo = 131187;
-			c3.accNo = 11177;
-			c3.limitNo = 2000;
-			c3.expiryDate = expiryDate2;
-
-			CreditCardDAOImpl dao = new CreditCardDAOImpl();
+			LocalDate expiryDate2 = LocalDate.parse(s.next());
+			LOGGER.getInput("Enter creditCardNo:");
+			c3.setCreditCardNo(s.nextInt());
+			LOGGER.getInput("Enter accNo:");
+			c3.setAccNo(s.nextInt());
+			LOGGER.getInput("Enter limitNo:");
+			c3.setLimitNo(s.nextInt());
+			LOGGER.getInput("Enter expiryDate:");
+			c3.setExpiryDate(expiryDate2);
+			
+			CreditCardDAO dao =DAOFactory.getCreditCardDAO();
 			dao.addCreditCard(c1);
-
-			CreditCardDAOImpl dao1 = new CreditCardDAOImpl();
-			dao1.addCreditCard(c2);
-
-			CreditCardDAOImpl dao2 = new CreditCardDAOImpl();
-			dao2.addCreditCard(c3);
+			dao.addCreditCard(c2);
+			dao.addCreditCard(c3);
+			s.close();
 
 		}
 

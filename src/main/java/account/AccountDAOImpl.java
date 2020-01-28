@@ -18,10 +18,10 @@ public class AccountDAOImpl implements AccountDAO {
 		try {
 			Connection con = ConnectionUtil.getconnection();
 			PreparedStatement pst = con.prepareStatement(sql);
-			pst.setInt(1, account.customerId);
-			pst.setInt(2, account.accNo);
-			pst.setString(3, account.accType);
-			pst.setInt(4, account.availableBalance);
+			pst.setInt(1, account.getCustomerId());
+			pst.setInt(2, account.getAccNo());
+			pst.setString(3, account.getAccType());
+			pst.setInt(4, account.getAvailableBalance());
 			int rows = pst.executeUpdate();
 			System.out.println("no of rows inserted:" + rows);
 		} catch (SQLException e) {
@@ -58,14 +58,14 @@ public class AccountDAOImpl implements AccountDAO {
 		}
 		return a;
 	}
-	public void updateAccount( int accNo,int Id) throws Exception {
+	public void updateAccount( int accNo,int id) throws Exception {
 		String sql = "update account_details set acc_no=? where customer_id=?";
 		System.out.println(sql);
 
 		Connection con = ConnectionUtil.getconnection();
 		PreparedStatement pst = con.prepareStatement(sql);
 		pst.setInt(1,accNo );
-		pst.setInt(2, Id);
+		pst.setInt(2, id);
 
 		int rows = pst.executeUpdate();
 		System.out.println("no of rows updated:"+rows);

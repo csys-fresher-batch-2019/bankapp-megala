@@ -20,10 +20,10 @@ public class CreditCardDAOImpl implements CreditCardDAO {
 		try {
 			Connection con = ConnectionUtil.getconnection();
 			PreparedStatement pst = con.prepareStatement(sql);
-			pst.setInt(1, creditCard.creditCardNo);
-			pst.setInt(2, creditCard.accNo);
-			pst.setInt(3, creditCard.limitNo);
-			pst.setDate(4, Date.valueOf(creditCard.expiryDate));
+			pst.setInt(1, creditCard.getCreditCardNo());
+			pst.setInt(2, creditCard.getAccNo());
+			pst.setInt(3, creditCard.getLimitNo());
+			pst.setDate(4, Date.valueOf(creditCard.getExpiryDate()));
 			int rows = pst.executeUpdate();
 			System.out.println("no of rows inserted:" + rows);
 		} catch (SQLException e) {

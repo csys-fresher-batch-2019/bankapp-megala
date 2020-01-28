@@ -29,10 +29,10 @@ public class TestLoadAccount {
 			
 			
 			Account account=new Account();
-			account.accNo=accNo;
-			account.accType=accType;
-			account.availableBalance=availableBalance;
-			account.customerId=customerId;
+			account.setAccNo(accNo);
+			account.setAccType(accType);
+			account.setAvailableBalance(availableBalance);
+			account.setCustomerId(customerId);
 			//System.out.println(branch);
 			
 			daoImpl.addAccount(account);
