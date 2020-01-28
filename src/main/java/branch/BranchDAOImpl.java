@@ -8,7 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import bank.ConnectionUtil;
+import bank.util.ConnectionUtil;
 
 public class BranchDAOImpl implements BranchDAO {
 

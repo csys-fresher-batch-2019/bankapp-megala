@@ -1,5 +1,7 @@
 package com.branch;
 
+import java.util.Scanner;
+
 import branch.Branch;
 import branch.BranchDAOImpl;
 
@@ -9,24 +11,41 @@ public class TestAddBranch {
 		// TODO Auto-generated method stub
 
 		Branch b1=new Branch();
-		b1.setId(1);
-		b1.name="Sullur";
-		b1.city="coimbatore";
+		Scanner s1=new Scanner(System.in);
+		System.out.println("Enter branchId:");
+		int b=s1.nextInt();
+		b1.setId(b);
+		System.out.println("Enter branchName:");
+		b1.name=s1.next();
+		System.out.println("Enter branchCity");
+		b1.city=s1.next();
 		
 		Branch b2=new Branch();
-		b2.setId(2);
-		b2.name="vandalur";
-		b2.city="chennai";
+		System.out.println("Enter branchId:");
+		int c=s1.nextInt();
+		b2.setId(c);
+		System.out.println("Enter branchName:");
+		b2.name=s1.next();
+		System.out.println("Enter branchCity");
+		b2.city=s1.next();
 		
 		Branch b3=new Branch();
-		b3.setId(3);
-		b3.name="alwarpet";
-		b3.city="chennai";
+		System.out.println("Enter branchId:");
+		int d=s1.nextInt();
+		b3.setId(d);
+		System.out.println("Enter branchName:");
+		b3.name=s1.next();
+		System.out.println("Enter branchCity");
+		b3.city=s1.next();
 		
 		Branch b4=new Branch();
-		b4.setId(4);
-		b4.name="ramanadhapuram";
-		b4.city="coimbatore";
+		System.out.println("Enter branchId:");
+		int e=s1.nextInt();
+		b4.setId(e);
+		System.out.println("Enter branchName:");
+		b4.name=s1.next();
+		System.out.println("Enter branchCity");
+		b4.city=s1.next();
 		
 		BranchDAOImpl daoImpl=new BranchDAOImpl();
 		daoImpl.addBranch(b1);
@@ -39,6 +58,8 @@ public class TestAddBranch {
 
 		BranchDAOImpl daoImpl4=new BranchDAOImpl();
 		daoImpl4.addBranch(b4);
+		
+		s1.close();
 
 
 	}

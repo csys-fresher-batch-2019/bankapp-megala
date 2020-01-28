@@ -2,6 +2,7 @@ package com.loan;
 
 import loan.Loan;
 import loan.LoanDAOImpl;
+import loan.LoanStatusEnum;
 
 public class TestAddLoan {
 	public static void main(String[] args) throws Exception {

@@ -1,18 +1,31 @@
 package com.account;
 
 import account.AccountDAOImpl;
+
+import java.util.Scanner;
+
 import account.Account;
 
 public class TestAddAccount {
 
 	public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub
-		Account b1=new Account();
-		b1.customerId=3;
-		b1.accNo=11188;
-		b1.accType="saving";
-		b1.availableBalance=12340;
+//		Account b1=new Account();
+//		b1.customerId=3;
+//		b1.accNo=11188;
+//		b1.accType="saving";
+//		b1.availableBalance=12340;
 		
+		Account b1=new Account();
+		Scanner s=new Scanner(System.in);
+		System.out.println("Enter customerId:");
+		b1.customerId=s.nextInt();
+		System.out.println("Enter accNo:");
+		b1.accNo=s.nextInt();
+		System.out.println("Enter accType:");
+		b1.accType=s.next();
+		System.out.println("availableBalance:");
+		b1.availableBalance=s.nextInt();
 		
 		Account b2=new Account();
 		b2.customerId=2;

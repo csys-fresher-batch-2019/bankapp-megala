@@ -1,7 +1,5 @@
 package loan;
 
-import com.loan.LoanStatusEnum;
-
 public class Loan {
 	public int customerId;
 	public String branchName;

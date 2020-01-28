@@ -8,9 +8,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.loan.LoanStatusEnum;
+import bank.util.ConnectionUtil;
 
-import bank.ConnectionUtil;
 
 public class LoanDAOImpl implements LoanDAO {
 	public void addLoan(Loan loan) throws Exception {

@@ -1,6 +1,7 @@
 package com.loan;
 
 import loan.LoanDAOImpl;
+import loan.LoanStatusEnum;
 
 public class TestUpdateLoan {
 
