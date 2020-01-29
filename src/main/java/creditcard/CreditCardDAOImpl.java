@@ -34,7 +34,7 @@ public class CreditCardDAOImpl implements CreditCardDAO {
 	public List<CreditCard> displayCreditCard() throws Exception {
 		List<CreditCard> c= new ArrayList<CreditCard>();
 
-		String sql ="select credit_card_no,acc_no,limit_no,expiry_date,emergency from credit_card";
+		String sql ="select credit_card_no,acc_no,limit_no,expiry_date from credit_card";
 		System.out.println(sql);
 
 		Connection con = ConnectionUtil.getconnection();
@@ -42,16 +42,14 @@ public class CreditCardDAOImpl implements CreditCardDAO {
 		ResultSet rows = stmt.executeQuery(sql);
 
 		while (rows.next()) {
-			int creditCardNo = rows.getInt("credit_card_no");
+			long creditCardNo = rows.getLong("credit_card_no");
 			String accNo = rows.getString("acc_no");
 			String limitNo=rows.getString("limit_no");
 			LocalDate expiryDate = rows.getDate("expiry_date").toLocalDate();
-			int emergency=rows.getInt("emergency");
 			System.out.println(creditCardNo);
 			System.out.println(accNo);
 			System.out.println(limitNo);
 			System.out.println(expiryDate);
-			System.out.println(emergency);
 
 			//extracting details from sql
 			CreditCard creditcard=new CreditCard();
@@ -88,7 +86,7 @@ public class CreditCardDAOImpl implements CreditCardDAO {
 		}
 
 	}
-	public void updateCreditCard1(String comments,int creditCardNo,boolean blocked) throws Exception{
+	public void updateCreditCard1(String comments,long creditCardNo,boolean blocked) throws Exception{
 		
 		String sql="update credit_card set comments=?,blocked=? where credit_card_no=?";
 		System.out.println(sql);
@@ -96,7 +94,7 @@ public class CreditCardDAOImpl implements CreditCardDAO {
 		PreparedStatement pst = con.prepareStatement(sql);
 		pst.setString (1,comments);
 		pst.setInt(2, blocked?1:0);
-		pst.setInt(3, creditCardNo);
+		pst.setLong(3, creditCardNo);
 		int rows = pst.executeUpdate();
 		System.out.println("no of rows updated:"+rows);
 

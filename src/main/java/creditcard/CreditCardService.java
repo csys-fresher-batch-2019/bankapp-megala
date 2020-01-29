@@ -4,7 +4,7 @@ import daoFactory.DAOFactory;
 
 public class CreditCardService {
 
-	public static boolean validateCreditCard(CreditCard creditCard) {
+	public static boolean validateCreditCard(CreditCard creditCard) throws Exception {
 		try {
 			CreditCardValidator.validateCreditCard(creditCard.getCreditCardNo(),creditCard.getExpiryDate());
 			CreditCardDAO dao=DAOFactory.getCreditCardDAO();
