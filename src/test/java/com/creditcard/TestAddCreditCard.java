@@ -19,7 +19,7 @@ public class TestAddCreditCard {
 			Scanner s=new Scanner(System.in);
 			LocalDate expiryDate = LocalDate.parse(s.next());
 			LOGGER.getInput("Enter creditCardNo:");
-			c1.setCreditCardNo(s.nextInt());
+			c1.setCreditCardNo(s.nextLong());
 			LOGGER.getInput("Enter accNo:");
 			c1.setAccNo(s.nextInt());
 			LOGGER.getInput("Enter limitNo:");
@@ -30,7 +30,7 @@ public class TestAddCreditCard {
 			CreditCard c2 = new CreditCard();
 			LocalDate expiryDate1 = LocalDate.parse(s.next());
 			LOGGER.getInput("Enter creditCardNo:");
-			c2.setCreditCardNo(s.nextInt());
+			c2.setCreditCardNo(s.nextLong());
 			LOGGER.getInput("Enter accNo:");
 			c2.setAccNo(s.nextInt());
 			LOGGER.getInput("Enter limitNo:");
@@ -41,7 +41,7 @@ public class TestAddCreditCard {
 			CreditCard c3 = new CreditCard();
 			LocalDate expiryDate2 = LocalDate.parse(s.next());
 			LOGGER.getInput("Enter creditCardNo:");
-			c3.setCreditCardNo(s.nextInt());
+			c3.setCreditCardNo(s.nextLong());
 			LOGGER.getInput("Enter accNo:");
 			c3.setAccNo(s.nextInt());
 			LOGGER.getInput("Enter limitNo:");
