@@ -4,16 +4,16 @@ package creditcard;
 import java.time.LocalDate;
 
 public class CreditCard {
-	private int creditCardNo;
+	private long creditCardNo;
 	private int accNo;
 	private int limitNo;
 	private LocalDate expiryDate;
 	private String comments;
 	private boolean blocked=true;
-	public int getCreditCardNo() {
+	public long getCreditCardNo() {
 		return creditCardNo;
 	}
-	public void setCreditCardNo(int creditCardNo) {
+	public void setCreditCardNo(long creditCardNo) {
 		this.creditCardNo = creditCardNo;
 	}
 	public int getAccNo() {

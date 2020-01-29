@@ -2,17 +2,21 @@ package com.customer;
 
 import java.util.Scanner;
 
-import customer.CustomerDAOImpl;
+import customer.CustomerDAO;
+import daoFactory.DAOFactory;
+import logger.Logger;
 
 public class TestDeleteCustomer {
+
+	private static final Logger LOGGER = Logger.getInstance();
 
 	public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub
 		Scanner s=new Scanner(System.in);
-		System.out.println("Enter customerId:");
+		LOGGER.getInput("Enter customerId:");
 		int input=s.nextInt();
-		CustomerDAOImpl daoImpl = new CustomerDAOImpl();
-		daoImpl.deleteCustomer(input);
+		CustomerDAO dao =DAOFactory.getCustomerDAO();
+		dao.deleteCustomer(input);
 		s.close();
 	}
 

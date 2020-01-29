@@ -20,7 +20,7 @@ public class CreditCardDAOImpl implements CreditCardDAO {
 		try {
 			Connection con = ConnectionUtil.getconnection();
 			PreparedStatement pst = con.prepareStatement(sql);
-			pst.setInt(1, creditCard.getCreditCardNo());
+			pst.setLong(1, creditCard.getCreditCardNo());
 			pst.setInt(2, creditCard.getAccNo());
 			pst.setInt(3, creditCard.getLimitNo());
 			pst.setDate(4, Date.valueOf(creditCard.getExpiryDate()));
