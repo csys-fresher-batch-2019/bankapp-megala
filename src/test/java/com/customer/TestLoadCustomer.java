@@ -29,10 +29,10 @@ public class TestLoadCustomer {
 			String city=row[3];
 			
 			Customer customer=new Customer();
-			customer.name=name;
-			customer.id=id;
-			customer.street=street;
-			customer.city=city;
+			customer.setName(name);
+			customer.setId(id);
+			customer.setStreet(street);
+			customer.setCity(city);
 			System.out.println(customer);
 			
 			daoImpl.addCustomer(customer);
