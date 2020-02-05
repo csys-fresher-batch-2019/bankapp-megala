@@ -22,9 +22,9 @@ public class TestAddLoan {
 		b1.setLoanNo(s.next());
 		LOGGER.getInput("Enter amount:");
 		b1.setAmount(s.nextInt());
-		LOGGER.getInput("Enter status:");
 		b1.setStatus(LoanStatusEnum.PENDING);
 		Loan b2=new Loan();
+		
 		LOGGER.getInput("Enter customerId:");
 		b2.setCustomerId(s.nextInt());
 		LOGGER.getInput("Enter branchName:");
@@ -33,7 +33,6 @@ public class TestAddLoan {
 		b2.setLoanNo(s.next());
 		LOGGER.getInput("Enter amount:");
 		b2.setAmount(s.nextInt());
-		LOGGER.getInput("Enter status:");
 		b2.setStatus(LoanStatusEnum.PENDING);
 		
 		Loan b3=new Loan();
@@ -45,9 +44,8 @@ public class TestAddLoan {
 		b3.setLoanNo(s.next());
 		LOGGER.getInput("Enter amount:");
 		b3.setAmount(s.nextInt());
-		LOGGER.getInput("Enter status:");
 		b3.setStatus(LoanStatusEnum.PENDING);
-		
+	
 		Loan b4=new Loan();
 		LOGGER.getInput("Enter customerId:");
 		b4.setCustomerId(s.nextInt());
@@ -57,7 +55,6 @@ public class TestAddLoan {
 		b4.setLoanNo(s.next());
 		LOGGER.getInput("Enter amount:");
 		b4.setAmount(s.nextInt());
-		LOGGER.getInput("Enter status:");
 		b4.setStatus(LoanStatusEnum.PENDING);
 
 		LoanDAO dao=DAOFactory.getLoanDAO();

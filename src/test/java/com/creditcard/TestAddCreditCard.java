@@ -17,7 +17,6 @@ public class TestAddCreditCard {
 
 			CreditCard c1 = new CreditCard();
 			Scanner s=new Scanner(System.in);
-			LocalDate expiryDate = LocalDate.parse(s.next());
 			LOGGER.getInput("Enter creditCardNo:");
 			c1.setCardNo(s.nextLong());
 			LOGGER.getInput("Enter accNo:");
@@ -25,10 +24,10 @@ public class TestAddCreditCard {
 			LOGGER.getInput("Enter limitNo:");
 			c1.setLimitNo(s.nextInt());
 			LOGGER.getInput("Enter expiryDate:");
+			LocalDate expiryDate = LocalDate.parse(s.next());
 			c1.setExpiryDate(expiryDate);
 			
 			CreditCard c2 = new CreditCard();
-			LocalDate expiryDate1 = LocalDate.parse(s.next());
 			LOGGER.getInput("Enter creditCardNo:");
 			c2.setCardNo(s.nextLong());
 			LOGGER.getInput("Enter accNo:");
@@ -36,10 +35,10 @@ public class TestAddCreditCard {
 			LOGGER.getInput("Enter limitNo:");
 			c2.setLimitNo(s.nextInt());
 			LOGGER.getInput("Enter expiryDate:");
+			LocalDate expiryDate1 = LocalDate.parse(s.next());
 			c2.setExpiryDate(expiryDate1);
 
 			CreditCard c3 = new CreditCard();
-			LocalDate expiryDate2 = LocalDate.parse(s.next());
 			LOGGER.getInput("Enter creditCardNo:");
 			c3.setCardNo(s.nextLong());
 			LOGGER.getInput("Enter accNo:");
@@ -47,6 +46,7 @@ public class TestAddCreditCard {
 			LOGGER.getInput("Enter limitNo:");
 			c3.setLimitNo(s.nextInt());
 			LOGGER.getInput("Enter expiryDate:");
+			LocalDate expiryDate2 = LocalDate.parse(s.next());
 			c3.setExpiryDate(expiryDate2);
 			
 			CreditCardDAO dao =DAOFactory.getCreditCardDAO();

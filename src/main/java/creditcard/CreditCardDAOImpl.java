@@ -15,7 +15,7 @@ import bank.util.ConnectionUtil;
 public class CreditCardDAOImpl implements CreditCardDAO {
 	
 	public void addCreditCard(CreditCard creditCard) throws Exception {
-		String sql ="insert into credit_card(credit_card_no,acc_no,limit_no,expiry_date)values(?,?,?,?)";
+		String sql ="insert into credit_card(credit_card_id,credit_card_no,acc_no,card_limit,expiry_date)values(credit_card_id_seq.nextval,?,?,?,?)";
 		System.out.println(sql);
 		try {
 			Connection con = ConnectionUtil.getconnection();

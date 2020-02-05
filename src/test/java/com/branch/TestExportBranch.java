@@ -19,12 +19,12 @@ public class TestExportBranch {
 		BranchDAOImpl daoImpl = new BranchDAOImpl();
 		List<Branch> list = daoImpl.list();
 		
-		System.out.println("NO of branches:" + list.size());
-		String fileContent = " ";
+		System.out.println("NO of branches:"+ list.size());
+		String fileContent = "";
 		//Path path=Paths.get(fileName);
 		//List<String> lines=Files.readAllLines(path);
 		for(Branch branch:list) {
-			String line = branch.getId()+","+branch.name+","+branch.city;
+			String line =branch.getId()+","+branch.name+","+branch.city;
 			
 			fileContent = fileContent+line+"\n";
 			
