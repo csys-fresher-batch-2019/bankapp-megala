@@ -14,7 +14,7 @@ public class TestAddTransaction {
 	public static void main(String[] args) throws Exception {
 		Transaction c1 = new Transaction(); 
 		Scanner s1=new Scanner(System.in);
-		LOGGER.getInput("Enter transactionId:");
+		LOGGER.getInput("Enter transactionId:"); 
 		c1.setTransactionId(s1.nextInt());
 		LOGGER.getInput("Enter beneficiaryNo:");
 		c1.setBeneficiaryAccNo(s1.nextInt());

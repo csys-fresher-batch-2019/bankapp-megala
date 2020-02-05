@@ -9,10 +9,10 @@ public class TestCreditCard {
 
 	public static void main(String[] args) {
 		CreditCard creditCard=new CreditCard();
-		creditCard.setCardNo(9999999999999999L);
-		creditCard.setExpiryDate(LocalDate.parse("2020-11-01"));
-		creditCard.setCvvNo(124);
-		creditCard.setPin(1111);
+		creditCard.setCardNo(1111111111111111L);
+		creditCard.setExpiryDate(LocalDate.parse("2020-09-08"));
+		creditCard.setCvvNo(123);
+		creditCard.setPin(1234);
 		
 	
 			try {

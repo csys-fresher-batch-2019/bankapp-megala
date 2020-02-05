@@ -18,7 +18,7 @@ public class TestUpdateCreditCard1 {
 		LOGGER.getInput("Enter comments:");
 		String comments=s.next();
 		LOGGER.getInput("Enter creditCardNo:");
-		int creditNo=s.nextInt();
+		long creditNo=s.nextLong();
 		LOGGER.getInput("Enter blocked status:");
 		boolean status=s.nextBoolean();
 		CreditCardDAO dao = DAOFactory.getCreditCardDAO();

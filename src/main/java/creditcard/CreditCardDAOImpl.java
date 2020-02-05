@@ -15,15 +15,18 @@ import bank.util.ConnectionUtil;
 public class CreditCardDAOImpl implements CreditCardDAO {
 	
 	public void addCreditCard(CreditCard creditCard) throws Exception {
-		String sql ="insert into credit_card(credit_card_id,credit_card_no,acc_no,card_limit,expiry_date)values(credit_card_id_seq.nextval,?,?,?,?)";
+		String sql ="insert into credit_card(credit_card_id,credit_card_no,credit_card_pin,acc_no,card_limit,cvv_no,expiry_date,available_balance)values(credit_card_id_seq.nextval,?,?,?,?,?,?,?)";
 		System.out.println(sql);
 		try {
 			Connection con = ConnectionUtil.getconnection();
 			PreparedStatement pst = con.prepareStatement(sql);
 			pst.setLong(1, creditCard.getCardNo());
-			pst.setInt(2, creditCard.getAccNo());
-			pst.setInt(3, creditCard.getLimitNo());
-			pst.setDate(4, Date.valueOf(creditCard.getExpiryDate()));
+			pst.setInt(2, creditCard.getPin());
+			pst.setInt(3, creditCard.getAccNo());
+			pst.setInt(4, creditCard.getLimitNo());
+			pst.setInt(5, creditCard.getCvvNo());
+			pst.setDate(6, Date.valueOf(creditCard.getExpiryDate()));
+			pst.setFloat(7, creditCard.getAvailableBalance());
 			int rows = pst.executeUpdate();
 			System.out.println("no of rows inserted:" + rows);
 		} catch (SQLException e) {
@@ -78,18 +81,7 @@ public class CreditCardDAOImpl implements CreditCardDAO {
 		}
 		return c;
 	}
-	public void updateCreditCard(int emergency,String accNo) throws Exception {
-		String sql = "update credit_card set emergency=? where acc_no=?";
-		System.out.println(sql);
-
-		Connection con = ConnectionUtil.getconnection();
-		PreparedStatement pst = con.prepareStatement(sql);
-		pst.setInt (1, emergency);
-		pst.setString(2, accNo);
-
-		int rows = pst.executeUpdate();
-		System.out.println("no of rows updated:"+rows);
-	}
+	
 	public void deleteCreditCard(String accNo) throws Exception {
 		String sql = "delete from credit_card where acc_no=?";
 		System.out.println(sql);
