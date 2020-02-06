@@ -30,7 +30,7 @@ public class CreditCardDAOImpl implements CreditCardDAO {
 			int rows = pst.executeUpdate();
 			LOGGER.info("no of rows inserted:" + rows);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
+		
 			LOGGER.error(e);
 		}
 }
@@ -51,7 +51,7 @@ public class CreditCardDAOImpl implements CreditCardDAO {
 			}
 		}
 		}catch (Exception e) {
-			// TODO Auto-generated catch block
+			
 			LOGGER.error(e);
 		}
 		return creditCardId;

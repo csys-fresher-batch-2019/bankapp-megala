@@ -6,9 +6,15 @@ import java.sql.Types;
 import java.time.LocalDate;
 import bank.util.ConnectionUtil;
 import daoFactory.DAOFactory;
+import logger.Logger;
 
 
 public class CreditCardService {
+	 private CreditCardService() {
+	    throw new IllegalStateException("Utility class");
+	  }
+
+	private static final Logger LOGGER = Logger.getInstance();
 
 	public static boolean validateCreditCard(long creditCardNo,LocalDate expiryDate,int cvvNo) throws Exception {
 		try {
@@ -17,7 +23,8 @@ public class CreditCardService {
 			
 		}
 		catch(Exception e) {
-			System.out.println(e.getMessage());
+				
+				LOGGER.error(e);
 		}
 		return false;
 		
@@ -31,7 +38,7 @@ public class CreditCardService {
 			
 		}
 		catch(Exception e) {
-			System.out.println(e.getMessage());
+			LOGGER.error(e);
 		}
 		return false;
 	}
@@ -43,8 +50,8 @@ public class CreditCardService {
 			CreditCardDAO c1=DAOFactory.getCreditCardDAO();
 			int ccId = c1.displayCreditCard(creditCard.getCardNo(),creditCard.getExpiryDate(),creditCard.getCvvNo());
 			if(ccId>0) {
-			Connection con = ConnectionUtil.getconnection();
-			CallableStatement stmt=con.prepareCall("{call trans_procedure1(?,?,?,?)}");
+			try(Connection con = ConnectionUtil.getconnection();
+			CallableStatement stmt=con.prepareCall("{call trans_procedure1(?,?,?,?)}")){
 			stmt.setLong(1, creditCard.getCardNo());
 			stmt.setFloat(2,amount);
 			stmt.setString(3, merchantId);
@@ -56,27 +63,9 @@ public class CreditCardService {
 					result=true;
 				}
 			}
+			}
 		}
 	
 		return result;
 	}
 	}
-/*	public static boolean registerCreditCard(CreditCard creditCard) throws Exception {
-		
-		boolean result ;
-		try {
-			CreditCardDAO dao=DAOFactory.getCreditCardDAO();
-			CreditCardValidator.validateCreditCard(creditCard.getCreditCardNo(),creditCard.getExpiryDate());
-			dao.addCreditCard(creditCard);
-			result = true;
-			
-		}
-		catch(Exception e) {
-			System.out.println(e.getMessage());
-			throw new Exception("Unable to register credit card: " + e.getMessage());
-		}
-		return result;
-		
-
-	}
-*/

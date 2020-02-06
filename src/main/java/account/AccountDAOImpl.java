@@ -26,7 +26,7 @@ public class AccountDAOImpl implements AccountDAO {
 			int rows = pst.executeUpdate();
 			LOGGER.info("no of rows inserted:" + rows);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
+			
 			LOGGER.error(e);
 		}
 
@@ -51,7 +51,7 @@ public class AccountDAOImpl implements AccountDAO {
 			LOGGER.getInput(accNo);
 			LOGGER.getInput(accType);
 			LOGGER.getInput(availableBalance);
-			//extracting details from sql
+			
 			Account account=new Account();
 			a.add(account);
 			
@@ -92,12 +92,12 @@ public class AccountDAOImpl implements AccountDAO {
 			int rows = pst.executeUpdate();
 			LOGGER.info("no of rows deleted:" + rows);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
+			
 			LOGGER.error(e);
 		}
 
 	}
-	public void searchByAccountNo(int accNo) throws Exception{
+	public void searchByAccountNo(int accNo) {
 		String sql = "select customer_id,acc_no,acc_type,available_balance from account_details where acc_no=?";
 		LOGGER.info(sql);
 		try(

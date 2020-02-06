@@ -46,7 +46,7 @@ public class BeneficiaryDAOImpl implements BeneficiaryDAO {
 			LOGGER.getInput(accNo);
 			LOGGER.getInput(iFSCCode);
 
-			//extracting details from sql
+			
 			Beneficiary beneficiary=new Beneficiary();
 			b.add(beneficiary);
 		}

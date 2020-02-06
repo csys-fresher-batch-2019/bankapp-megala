@@ -1,7 +1,6 @@
-package creditcardTransaction;
+package creditcardtransaction;
 
 import java.sql.Timestamp;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class CreditCardTransaction {

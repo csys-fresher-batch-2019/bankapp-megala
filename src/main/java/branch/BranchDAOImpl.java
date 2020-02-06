@@ -16,9 +16,9 @@ public class BranchDAOImpl implements BranchDAO {
 	public void addBranch(Branch branch) {
 		String sql = "insert into branch(branch_id,branch_name,branch_city)values(?,?,?)";
 		LOGGER.info(sql);
-		try {
+		try (
 			Connection con = ConnectionUtil.getconnection();
-			PreparedStatement pst = con.prepareStatement(sql);
+			PreparedStatement pst = con.prepareStatement(sql)){
 			pst.setInt(1, branch.getId());
 			pst.setString(2, branch.name);
 			pst.setString(3, branch.city);
@@ -60,7 +60,7 @@ public class BranchDAOImpl implements BranchDAO {
 		return b;
 	}
 
-	public void updateBranch(String name, int id) throws Exception {
+	public void updateBranch(String name, int id){
 		String sql = "update branch set branch_name=? where branch_id=?";
 		LOGGER.info(sql);
 

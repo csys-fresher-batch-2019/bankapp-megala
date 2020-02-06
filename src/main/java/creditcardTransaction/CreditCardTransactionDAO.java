@@ -1,9 +1,9 @@
-package creditcardTransaction;
+package creditcardtransaction;
 
 import java.util.List;
 
 public interface CreditCardTransactionDAO {
-	public int addCreditCardTransaction(CreditCardTransaction creditCardTransaction) throws Exception;
-	public List<CreditCardTransaction> displayCreditCardPaymentList() throws Exception;
+	public int addCreditCardTransaction(CreditCardTransaction creditCardTransaction) ;
+	public List<CreditCardTransaction> displayCreditCardPaymentList() ;
 		
 }
