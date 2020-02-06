@@ -1,4 +1,4 @@
-package bankException;
+package bankexception;
 public class BankException extends Exception{
 	
 private static final long serialVersionUID=1L;

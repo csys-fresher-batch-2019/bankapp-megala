@@ -17,72 +17,64 @@ public class TestAddBranch {
 		LOGGER.getInput("Enter branchId:");
 		b1.setId(s1.nextInt());
 		LOGGER.getInput("Enter branchName:");
-		b1.name=s1.next();
+		b1.setName(s1.next());
 		LOGGER.getInput("Enter branchCity");
-		b1.city=s1.next();
+		b1.setCity(s1.next());
 		
 		Branch b2=new Branch();
 		LOGGER.getInput("Enter branchId:");
 		int c=s1.nextInt();
 		b2.setId(c);
 		LOGGER.getInput("Enter branchName:");
-		b2.name=s1.next();
+		b2.setName(s1.next());
 		LOGGER.getInput("Enter branchCity");
-		b2.city=s1.next();
+		b2.setCity(s1.next());
 		
 		Branch b3=new Branch();
 		LOGGER.getInput("Enter branchId:");
 		int d=s1.nextInt();
 		b3.setId(d);
 		LOGGER.getInput("Enter branchName:");
-		b3.name=s1.next();
+		b3.setName(s1.next());
 		LOGGER.getInput("Enter branchCity");
-		b3.city=s1.next();
+		b3.setCity(s1.next());
 		
 		Branch b4=new Branch();
 		LOGGER.getInput("Enter branchId:");
 		int e=s1.nextInt();
 		b4.setId(e);
 		LOGGER.getInput("Enter branchName:");
-		b4.name=s1.next();
+		b4.setName(s1.next());
 		LOGGER.getInput("Enter branchCity");
-		b4.city=s1.next();
+		b4.setCity(s1.next());
 		
-//		BranchDAO dao=new BranchDAOImpl();
-//		dao.addBranch(b1);
+
 		
 		BranchDAO dao=DAOFactory.getBranchDAO();
 		try {
 			dao.addBranch(b1);
 		} catch (Exception e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
+						e1.printStackTrace();
 		}
 		try {
 			dao.addBranch(b2);
 		} catch (Exception e1) {
-			// TODO Auto-generated catch block
+			
 			e1.printStackTrace();
 		}
 		try {
 			dao.addBranch(b3);
 		} catch (Exception e1) {
-			// TODO Auto-generated catch block
+		
 			e1.printStackTrace();
 		}
 		try {
 			dao.addBranch(b4);
 		} catch (Exception e1) {
-			// TODO Auto-generated catch block
+			
 			e1.printStackTrace();
 		}
-		
-//		BranchDAO dao2=DAOFactory.getBranchDAO();
-//		dao2.addBranch(b3);
-//	
-//		BranchDAO dao3=DAOFactory.getBranchDAO();
-//		dao.addBranch(b4);
-		
+
 		
 		s1.close();
 

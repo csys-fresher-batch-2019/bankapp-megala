@@ -20,8 +20,8 @@ public class BranchDAOImpl implements BranchDAO {
 			Connection con = ConnectionUtil.getconnection();
 			PreparedStatement pst = con.prepareStatement(sql)){
 			pst.setInt(1, branch.getId());
-			pst.setString(2, branch.name);
-			pst.setString(3, branch.city);
+			pst.setString(2, branch.getName());
+			pst.setString(3, branch.getCity());
 
 			int rows = pst.executeUpdate();
 			LOGGER.info("no of rows inserted:" + rows);
@@ -49,8 +49,8 @@ public class BranchDAOImpl implements BranchDAO {
 			LOGGER.debug("id:"+id+",name:"+name+",city:"+city);
 			Branch branch=new Branch();
 			branch.setId(id);
-			branch.name = name;
-			branch.city = city;
+			branch.setName(name);
+			branch.setCity(city);
 			b.add(branch);
 		}
 		}

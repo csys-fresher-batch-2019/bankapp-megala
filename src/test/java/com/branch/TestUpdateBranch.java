@@ -18,7 +18,7 @@ public class TestUpdateBranch {
 		try {
 			dao.updateBranch(name,id);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		s.close();

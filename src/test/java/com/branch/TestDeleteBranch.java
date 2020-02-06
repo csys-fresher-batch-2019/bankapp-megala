@@ -10,7 +10,7 @@ public class TestDeleteBranch {
 		private static final Logger LOGGER = Logger.getInstance();
 
 		public static void main(String[] args) {
-			// TODO Auto-generated method stub
+			
 			Scanner s=new Scanner(System.in);
 			LOGGER.getInput("Enter branchId:");
 			int input=s.nextInt();
@@ -18,7 +18,7 @@ public class TestDeleteBranch {
 			try {
 				dao.delete(input);
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
+			
 				e.printStackTrace();
 			}
 			s.close();

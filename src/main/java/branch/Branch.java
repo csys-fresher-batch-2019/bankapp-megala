@@ -2,8 +2,8 @@ package branch;
 
 public class Branch {
 	private int id;
-	public String name;
-	public String city;
+	private String name;
+	private String city;
 	public void setId(int id) throws IllegalAccessException {
 		if(id<0) {
 			throw new IllegalAccessException("invalid number");
@@ -14,10 +14,22 @@ public class Branch {
 	public int getId() {
 		return id;
 	}
-	
-	@Override
-	public String toString() {
-		return "Branch [id=" + id + ", name=" + name + ", city=" + city + "]";
+
+	public String getName() {
+		return name;
 	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+	
 	
 }
