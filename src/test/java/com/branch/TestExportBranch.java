@@ -24,7 +24,7 @@ public class TestExportBranch {
 		//Path path=Paths.get(fileName);
 		//List<String> lines=Files.readAllLines(path);
 		for(Branch branch:list) {
-			String line =branch.getId()+","+branch.name+","+branch.city;
+			String line =branch.getId()+","+branch.getName()+","+branch.getCity();
 			
 			fileContent = fileContent+line+"\n";
 			

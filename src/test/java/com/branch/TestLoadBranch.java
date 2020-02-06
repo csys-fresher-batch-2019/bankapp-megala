@@ -30,8 +30,8 @@ public class TestLoadBranch {
 			
 			Branch branch=new Branch();
 			branch.setId(id);
-			branch.name=name;
-			branch.city=city;
+			branch.setName(name);
+			branch.setCity(city);
 			//System.out.println(branch);
 			
 			daoImpl.addBranch(branch);
