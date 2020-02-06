@@ -1,7 +1,7 @@
 package com.customer;
 
 import customer.CustomerDAO;
-import daofactory.DAOFactory;
+import factory.DAOFactory;
 
 public class TestDisplayCustomer {
 

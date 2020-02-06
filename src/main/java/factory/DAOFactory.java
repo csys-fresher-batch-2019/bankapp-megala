@@ -1,4 +1,4 @@
-package daofactory;
+package factory;
 
 import account.AccountDAO;
 import account.AccountDAOImpl;

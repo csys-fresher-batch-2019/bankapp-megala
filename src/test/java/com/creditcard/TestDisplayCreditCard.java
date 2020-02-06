@@ -1,7 +1,7 @@
 package com.creditcard;
 
 import creditcard.CreditCardDAO;
-import daofactory.DAOFactory;
+import factory.DAOFactory;
 
 public class TestDisplayCreditCard {
 

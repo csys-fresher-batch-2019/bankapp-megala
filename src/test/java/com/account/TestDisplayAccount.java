@@ -1,7 +1,7 @@
 package com.account;
 
 import account.AccountDAO;
-import daofactory.DAOFactory;
+import factory.DAOFactory;
 
 public class TestDisplayAccount {
 

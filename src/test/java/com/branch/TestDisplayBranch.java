@@ -1,7 +1,7 @@
 package com.branch;
 
 import branch.BranchDAO;
-import daofactory.DAOFactory;
+import factory.DAOFactory;
 
 public class TestDisplayBranch {
 

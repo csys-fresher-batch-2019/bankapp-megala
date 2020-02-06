@@ -1,6 +1,6 @@
 package com.transaction;
 
-import daofactory.DAOFactory;
+import factory.DAOFactory;
 import transaction.TransactionDAO;
 
 public class TestDisplayTransaction {

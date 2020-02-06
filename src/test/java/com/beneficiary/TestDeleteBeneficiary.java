@@ -3,7 +3,7 @@ package com.beneficiary;
 import java.util.Scanner;
 
 import beneficiary.BeneficiaryDAO;
-import daofactory.DAOFactory;
+import factory.DAOFactory;
 import logger.Logger;
 
 public class TestDeleteBeneficiary {

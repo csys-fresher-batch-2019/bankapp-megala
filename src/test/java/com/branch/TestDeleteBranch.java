@@ -3,7 +3,7 @@ package com.branch;
 import java.util.Scanner;
 
 import branch.BranchDAO;
-import daofactory.DAOFactory;
+import factory.DAOFactory;
 import logger.Logger;
 
 public class TestDeleteBranch {

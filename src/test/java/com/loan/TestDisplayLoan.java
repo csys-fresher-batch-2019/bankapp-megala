@@ -1,6 +1,6 @@
 package com.loan;
 
-import daofactory.DAOFactory;
+import factory.DAOFactory;
 import loan.LoanDAO;
 
 public class TestDisplayLoan {

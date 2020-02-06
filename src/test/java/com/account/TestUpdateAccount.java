@@ -3,7 +3,7 @@ package com.account;
 import java.util.Scanner;
 
 import account.AccountDAO;
-import daofactory.DAOFactory;
+import factory.DAOFactory;
 import logger.Logger;
 
 public class TestUpdateAccount {

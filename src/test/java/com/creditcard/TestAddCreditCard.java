@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 import creditcard.CreditCard;
 import creditcard.CreditCardDAO;
-import daofactory.DAOFactory;
+import factory.DAOFactory;
 import logger.Logger;
 
 

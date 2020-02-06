@@ -2,7 +2,7 @@ package com.loan;
 
 import java.util.Scanner;
 
-import daofactory.DAOFactory;
+import factory.DAOFactory;
 import loan.LoanDAO;
 import loan.LoanStatusEnum;
 import logger.Logger;

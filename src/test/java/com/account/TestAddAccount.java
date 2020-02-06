@@ -1,12 +1,12 @@
 package com.account;
 
-import daofactory.DAOFactory;
 import logger.Logger;
 
 import java.util.Scanner;
 
 import account.Account;
 import account.AccountDAO;
+import factory.DAOFactory;
 
 public class TestAddAccount {
 	private static final Logger LOGGER=Logger.getInstance();

@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 import customer.Customer;
 import customer.CustomerDAO;
-import daofactory.DAOFactory;
+import factory.DAOFactory;
 import logger.Logger;
 
 public class TestAddCustomer {

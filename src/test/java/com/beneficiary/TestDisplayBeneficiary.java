@@ -1,7 +1,7 @@
 package com.beneficiary;
 
 import beneficiary.BeneficiaryDAO;
-import daofactory.DAOFactory;
+import factory.DAOFactory;
 
 public class TestDisplayBeneficiary {
 

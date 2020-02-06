@@ -5,7 +5,7 @@ import java.sql.Connection;
 import java.sql.Types;
 import java.time.LocalDate;
 import bank.util.ConnectionUtil;
-import daofactory.DAOFactory;
+import factory.DAOFactory;
 import logger.Logger;
 
 
@@ -16,7 +16,7 @@ public class CreditCardService {
 
 	private static final Logger LOGGER = Logger.getInstance();
 
-	public static boolean validateCreditCard(long creditCardNo,LocalDate expiryDate,int cvvNo) throws Exception {
+	public static boolean validateCreditCard(long creditCardNo,LocalDate expiryDate,int cvvNo)  {
 		try {
 			CreditCardValidator.validateCreditCard(creditCardNo,expiryDate,cvvNo);
 			return true;
@@ -47,14 +47,12 @@ public class CreditCardService {
 		try {
 			validate = CreditCardValidator.validateCreditCard(creditCard.getCardNo(), creditCard.getExpiryDate(), creditCard.getCvvNo());
 		} catch (ValidateException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		boolean validate1 = false;
 		try {
 			validate1 = CreditCardValidator.validateCreditCard(creditCard.getCardNo(), creditCard.getPin());
 		} catch (ValidateException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		boolean result=false;

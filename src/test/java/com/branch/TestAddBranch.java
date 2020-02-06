@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 import branch.Branch;
 import branch.BranchDAO;
-import daofactory.DAOFactory;
+import factory.DAOFactory;
 import logger.Logger;
 
 public class TestAddBranch {

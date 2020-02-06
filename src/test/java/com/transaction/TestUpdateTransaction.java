@@ -2,7 +2,7 @@ package com.transaction;
 
 import java.util.Scanner;
 
-import daofactory.DAOFactory;
+import factory.DAOFactory;
 import transaction.TransactionDAO;
 
 public class TestUpdateTransaction {
