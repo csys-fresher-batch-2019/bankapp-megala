@@ -8,7 +8,6 @@ import customer.CustomerDAOImpl;
 public class TestExportCustomer {
 
 	public static void main(String[] args) throws Exception {
-		// TODO Auto-generated method stub
 
 		CustomerDAOImpl daoImpl = new CustomerDAOImpl();
 		List<Customer> display = daoImpl.display();

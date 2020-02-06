@@ -3,14 +3,13 @@ package com.beneficiary;
 import java.util.Scanner;
 
 import beneficiary.BeneficiaryDAO;
-import daoFactory.DAOFactory;
+import daofactory.DAOFactory;
 import logger.Logger;
 
 public class TestDeleteBeneficiary {
 	private static final Logger LOGGER=Logger.getInstance();
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		Scanner s=new Scanner(System.in);
 		LOGGER.getInput("Enter accNo:");
 		int accNo=s.nextInt();
@@ -18,7 +17,6 @@ public class TestDeleteBeneficiary {
 		try {
 			dao.deleteBeneficiary(accNo);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		s.close();

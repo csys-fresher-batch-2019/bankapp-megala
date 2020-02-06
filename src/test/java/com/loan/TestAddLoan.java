@@ -2,14 +2,13 @@ package com.loan;
 
 import java.util.Scanner;
 
-import daoFactory.DAOFactory;
+import daofactory.DAOFactory;
 import loan.Loan;
 import loan.LoanDAO;
 import loan.LoanStatusEnum;
 import logger.Logger;
 
 public class TestAddLoan {
-	//private static final Logger LOGGER = Logger.getInstance();
 	private static final Logger LOGGER=Logger.getInstance();
 	public static void main(String[] args) throws Exception {
 		Loan b1=new Loan();

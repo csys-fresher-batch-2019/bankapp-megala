@@ -2,20 +2,24 @@ package logger;
 
 public class Logger {
 	public static Logger getInstance() {
-		Logger logger=new Logger();
-		return logger;
+		return new Logger();
+	
 	}
 	public void getInput(Object message) {
+		Logger.log(message);
+	}
+	private static void log(Object message) {
 		System.out.println(message);
+		
 	}
 	public void debug(Object message) {
-		System.out.println(message);
+		Logger.log(message);
 	}
 	public void info(Object message) {
-		System.out.println(message);
+		Logger.log(message);
 	}
 	public void error(Object message) {
-		System.err.println(message);
+		Logger.log(message);
 	}
 
 }

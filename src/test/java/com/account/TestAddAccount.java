@@ -1,6 +1,6 @@
 package com.account;
 
-import daoFactory.DAOFactory;
+import daofactory.DAOFactory;
 import logger.Logger;
 
 import java.util.Scanner;
@@ -11,12 +11,7 @@ import account.AccountDAO;
 public class TestAddAccount {
 	private static final Logger LOGGER=Logger.getInstance();
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-//		Account b1=new Account();
-//		b1.customerId=3;
-//		b1.accNo=11188;
-//		b1.accType="saving";
-//		b1.availableBalance=12340;
+		
 		
 		Account b1=new Account();
 		Scanner s=new Scanner(System.in);
@@ -53,19 +48,19 @@ public class TestAddAccount {
 		try {
 			dao.addAccount(b1);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		try {
 			dao.addAccount(b2);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		try {
 			dao.addAccount(b3);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		s.close();

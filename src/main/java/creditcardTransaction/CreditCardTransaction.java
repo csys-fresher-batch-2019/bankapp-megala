@@ -47,7 +47,7 @@ public class CreditCardTransaction {
 		return merchantId;
 	}
 	public void setMerchantId(String merchantId2) {
-		// TODO Auto-generated method stub
+		
 		this.merchantId = merchantId2;
 		
 	}

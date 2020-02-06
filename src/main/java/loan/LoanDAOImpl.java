@@ -40,7 +40,7 @@ public class LoanDAOImpl implements LoanDAO {
 		try(Connection con = ConnectionUtil.getconnection();
 		Statement stmt = con.createStatement()){
 		try(ResultSet rows = stmt.executeQuery(sql)){
-		System.out.println("No of rows displyed:"+rows);
+		
 
 		while (rows.next()) {
 			int customerId = rows.getInt("customer_id");

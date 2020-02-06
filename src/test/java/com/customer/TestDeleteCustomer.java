@@ -3,7 +3,7 @@ package com.customer;
 import java.util.Scanner;
 
 import customer.CustomerDAO;
-import daoFactory.DAOFactory;
+import daofactory.DAOFactory;
 import logger.Logger;
 
 public class TestDeleteCustomer {
@@ -11,7 +11,6 @@ public class TestDeleteCustomer {
 	private static final Logger LOGGER = Logger.getInstance();
 
 	public static void main(String[] args) throws Exception {
-		// TODO Auto-generated method stub
 		Scanner s=new Scanner(System.in);
 		LOGGER.getInput("Enter customerId:");
 		int input=s.nextInt();

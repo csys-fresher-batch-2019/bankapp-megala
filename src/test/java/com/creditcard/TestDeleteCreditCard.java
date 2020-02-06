@@ -3,7 +3,7 @@ package com.creditcard;
 import java.util.Scanner;
 
 import creditcard.CreditCardDAO;
-import daoFactory.DAOFactory;
+import daofactory.DAOFactory;
 import logger.Logger;
 
 public class TestDeleteCreditCard {

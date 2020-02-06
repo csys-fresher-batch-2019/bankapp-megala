@@ -11,7 +11,6 @@ import customer.CustomerDAOImpl;
 public class TestLoadCustomer {
 
 	public static void main(String[] args) throws Exception {
-		// TODO Auto-generated method stub
 	String fileName="D:\\customer.txt";
 		
 

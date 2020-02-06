@@ -3,7 +3,7 @@ package com.branch;
 import java.util.Scanner;
 
 import branch.BranchDAO;
-import daoFactory.DAOFactory;
+import daofactory.DAOFactory;
 import logger.Logger;
 
 public class TestUpdateBranch {

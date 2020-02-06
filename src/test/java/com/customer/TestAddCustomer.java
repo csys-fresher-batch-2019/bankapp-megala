@@ -4,14 +4,13 @@ import java.util.Scanner;
 
 import customer.Customer;
 import customer.CustomerDAO;
-import daoFactory.DAOFactory;
+import daofactory.DAOFactory;
 import logger.Logger;
 
 public class TestAddCustomer {
 	private static final Logger LOGGER=Logger.getInstance();
 
 	public static void main(String[] args) throws Exception {
-		// TODO Auto-generated method stub
 		Customer b1=new Customer();
 		Scanner s1=new Scanner(System.in);
 		LOGGER.getInput("Enter customerId:");

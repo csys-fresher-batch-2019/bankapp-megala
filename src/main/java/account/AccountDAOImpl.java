@@ -13,6 +13,10 @@ import logger.Logger;
 public class AccountDAOImpl implements AccountDAO {
 	
 	private static final Logger LOGGER = Logger.getInstance();
+	private static final String acc_type="acc_type";
+	private static final String customer_id="customer_id";
+	private static final String acc_no="acc_no";
+	private static final String available_balance="available_balance";
 
 	public void addAccount(Account account){
 		String sql = "insert into account_details(customer_id,acc_no,acc_type,available_balance)values(?,?,?,?)";
@@ -42,10 +46,10 @@ public class AccountDAOImpl implements AccountDAO {
 		try(ResultSet rows = stmt.executeQuery(sql)){
 
 		while (rows.next()) {
-			int customerId = rows.getInt("customer_id");
-			int accNo = rows.getInt("acc_no");
-			String accType = rows.getString("acc_type");
-			int availableBalance = rows.getInt("available_balance");
+			int customerId = rows.getInt(customer_id);
+			int accNo = rows.getInt(acc_no);
+			String accType = rows.getString(acc_type);
+			int availableBalance = rows.getInt(available_balance);
 
 			LOGGER.getInput(customerId);
 			LOGGER.getInput(accNo);
@@ -107,9 +111,9 @@ public class AccountDAOImpl implements AccountDAO {
 		try(
 		ResultSet rows = pst.executeQuery()){
 		if (rows.next()) {
-			int customerId = rows.getInt("customer_id");
-			String accType=rows.getString("acc_type");
-			int availableBalance = rows.getInt("available_balance");
+			int customerId = rows.getInt(customer_id);
+			String accType=rows.getString(acc_type);
+			int availableBalance = rows.getInt(available_balance);
 			
 			LOGGER.getInput(customerId);
 			LOGGER.getInput(accType);
@@ -133,9 +137,9 @@ public class AccountDAOImpl implements AccountDAO {
 		pst.setInt(1,id);
 		try(ResultSet rows = pst.executeQuery()){
 		if (rows.next()) {
-			int accNo = rows.getInt("acc_no");
-			String accType=rows.getString("acc_type");
-			int availableBalance = rows.getInt("available_balance");
+			int accNo = rows.getInt(acc_no);
+			String accType=rows.getString(acc_type);
+			int availableBalance = rows.getInt(available_balance);
 			
 			LOGGER.getInput(accNo);
 			LOGGER.getInput(accType);
@@ -156,7 +160,7 @@ public class AccountDAOImpl implements AccountDAO {
 		pst.setInt(1,accNo);
 		try(ResultSet rows = pst.executeQuery()){
 		if (rows.next()) {
-			int availableBalance = rows.getInt("available_balance");
+			int availableBalance = rows.getInt(available_balance);
 			
 			LOGGER.getInput(availableBalance);
 		}

@@ -3,7 +3,7 @@ package com.transaction;
 import java.time.LocalDateTime;
 import java.util.Scanner;
 
-import daoFactory.DAOFactory;
+import daofactory.DAOFactory;
 import logger.Logger;
 import transaction.Transaction;
 import transaction.TransactionDAO;

@@ -1,6 +1,5 @@
 package com.branch;
 
-//import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -12,7 +11,6 @@ import branch.BranchDAOImpl;
 public class TestLoadBranch {
 
 	public static void main(String[] args) throws Exception {
-		// TODO Auto-generated method stub
 		String fileName="D:\\Branch.txt";
 		
 
@@ -32,7 +30,6 @@ public class TestLoadBranch {
 			branch.setId(id);
 			branch.setName(name);
 			branch.setCity(city);
-			//System.out.println(branch);
 			
 			daoImpl.addBranch(branch);
 

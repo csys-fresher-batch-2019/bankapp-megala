@@ -3,14 +3,12 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-//import java.util.List;
 
 
 
 public class TestReadBranch {
 
 	public static void main(String[] args) throws IOException {
-		// TODO Auto-generated method stub
 		Testutil.writeToFile("D:\\employees.txt", "1,ondipudur,covai\n2,sundarapuram,covai");
 		Testutil.writeToFile("D:\\departments.txt", "CSE,ECE");
 		Testutil.writeToFile("D:\\marks.txt", "60,70");

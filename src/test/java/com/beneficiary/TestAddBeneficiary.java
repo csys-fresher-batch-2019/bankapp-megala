@@ -4,14 +4,13 @@ import java.util.Scanner;
 
 import beneficiary.Beneficiary;
 import beneficiary.BeneficiaryDAO;
-import daoFactory.DAOFactory;
+import daofactory.DAOFactory;
 import logger.Logger;
 
 public class TestAddBeneficiary {
 	private static final Logger LOGGER=Logger.getInstance();
 
 	public static void main(String[] args)  {
-		// TODO Auto-generated method stub
 		Beneficiary b1=new Beneficiary();
 		Scanner s=new Scanner(System.in);
 		LOGGER.getInput("Enter beneficiary name:");
@@ -42,19 +41,16 @@ public class TestAddBeneficiary {
 		try {
 			dao.addBeneficiary(b1);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		try {
 			dao.addBeneficiary(b2);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		try {
 			dao.addBeneficiary(b3);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		

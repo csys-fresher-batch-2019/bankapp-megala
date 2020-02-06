@@ -3,7 +3,7 @@ package com.creditcard;
 import java.time.LocalDate;
 
 import creditcard.CreditCardDAO;
-import daoFactory.DAOFactory;
+import daofactory.DAOFactory;
 
 public class TestDisplayCreditCard1 {
 

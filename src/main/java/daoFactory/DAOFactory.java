@@ -1,4 +1,4 @@
-package daoFactory;
+package daofactory;
 
 import account.AccountDAO;
 import account.AccountDAOImpl;
@@ -18,41 +18,43 @@ import transaction.TransactionDAO;
 import transaction.TransactionDAOImpl;
 
 public class DAOFactory {
+	private DAOFactory() {
+		throw new IllegalStateException("Utility class");
+	}
 
 	public static BranchDAO getBranchDAO() {
-		BranchDAO branchDAO=new BranchDAOImpl();
-		return branchDAO;
+		
+		return new BranchDAOImpl();
 	}
 	public static CustomerDAO getCustomerDAO() {
-		CustomerDAO customerDAO=new CustomerDAOImpl();
-		return customerDAO;
+		
+		return new CustomerDAOImpl();
 	}
 	public static AccountDAO getAccountDAO() {
-		AccountDAO accountDAO=new AccountDAOImpl();
-		return accountDAO;
+		return new AccountDAOImpl();
 	}
 	public static LoanDAO getLoanDAO() {
-		LoanDAO loanDAO=new LoanDAOImpl();
-		return loanDAO;
+		return new LoanDAOImpl();
+	
 	}
 	public static CreditCardDAO getCreditCardDAO() {
-		CreditCardDAO creditCard=new CreditCardDAOImpl();
-		return creditCard;
+		return new CreditCardDAOImpl();
+		
 	}
 	
 	public static BeneficiaryDAO getBeneficiaryDAO() {
-		BeneficiaryDAO beneficiaryDAO=new BeneficiaryDAOImpl();
-		return beneficiaryDAO;
+		return new BeneficiaryDAOImpl();
+		
 
 }
 	public static TransactionDAO getTransactionDAO() {
-		TransactionDAO transactionDAO=new TransactionDAOImpl();
-		return transactionDAO;
+		return new TransactionDAOImpl();
+		
 	}
 	public static CreditCardTransactionDAO getCreditCardTransactionDAO() {
-		// TODO Auto-generated method stub
-		CreditCardTransactionDAO creditCardTransactionDAO=new CreditCardTransactionDAOImpl();
-		return creditCardTransactionDAO;
+		
+		return new CreditCardTransactionDAOImpl();
+	
 		
 	}
 }

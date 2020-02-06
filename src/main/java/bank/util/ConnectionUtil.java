@@ -13,7 +13,7 @@ public static Connection getconnection() throws Exception{
 		String server="CSLH2026";
 		String userName="system";
 		String password="oracle";
-		Connection connection=DriverManager.getConnection("jdbc:oracle:thin:@"+server+":1521:XE", userName, password);
-		return connection;
+		return DriverManager.getConnection("jdbc:oracle:thin:@"+server+":1521:XE", userName, password);
+		
 }
 }

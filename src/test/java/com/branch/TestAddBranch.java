@@ -4,13 +4,12 @@ import java.util.Scanner;
 
 import branch.Branch;
 import branch.BranchDAO;
-import daoFactory.DAOFactory;
+import daofactory.DAOFactory;
 import logger.Logger;
 
 public class TestAddBranch {
 	private static final Logger LOGGER=Logger.getInstance();
 	public static void main(String[] args) throws IllegalAccessException  {
-		// TODO Auto-generated method stub
 
 		Branch b1=new Branch();
 		Scanner s1=new Scanner(System.in);

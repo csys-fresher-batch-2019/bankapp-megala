@@ -3,8 +3,11 @@ package creditcard;
 import java.time.LocalDate;
 
 public class CreditCardValidator {
+	private CreditCardValidator() {
+		throw new IllegalStateException("Utility class");
+	}
 	
-	public static boolean validateCreditCard(long creditCardNo,LocalDate expiryDate,int cvvNo) throws Exception {
+	public static boolean validateCreditCard(long creditCardNo,LocalDate expiryDate,int cvvNo) throws ValidateException {
 		if(Long.toString(creditCardNo).length()<16 || Long.toString(creditCardNo).length()>16) {
 			throw new ValidateException("Invalid credit card no");
 		}
@@ -19,7 +22,7 @@ public class CreditCardValidator {
 		
 		
 	}
-	public static boolean validateCreditCard(long creditCardNo,int creditCardPin) throws Exception {
+	public static boolean validateCreditCard(long creditCardNo,int creditCardPin) throws ValidateException {
 		if(Long.toString(creditCardNo).length()<16 || Long.toString(creditCardNo).length()>16) {
 			throw new ValidateException("Invalid credit card no");
 		}

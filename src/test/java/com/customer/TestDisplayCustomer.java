@@ -1,13 +1,13 @@
 package com.customer;
 
-import customer.CustomerDAOImpl;
+import customer.CustomerDAO;
+import daofactory.DAOFactory;
 
 public class TestDisplayCustomer {
 
 	public static void main(String[] args) throws Exception {
-		// TODO Auto-generated method stub
-		CustomerDAOImpl daoImpl = new CustomerDAOImpl();
-		daoImpl.display();
+		CustomerDAO dao = DAOFactory.getCustomerDAO();
+		dao.display();
 	}
 
 }
