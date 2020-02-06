@@ -5,7 +5,7 @@ import java.sql.Connection;
 import java.sql.Types;
 import java.time.LocalDate;
 import bank.util.ConnectionUtil;
-import daoFactory.DAOFactory;
+import daofactory.DAOFactory;
 import logger.Logger;
 
 
