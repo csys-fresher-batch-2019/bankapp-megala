@@ -56,7 +56,7 @@ public class CreditCardService {
 			e.printStackTrace();
 		}
 		boolean result=false;
-		if(validate==true && validate1==true) {
+		if(validate && validate1) {
 			CreditCardDAO c1=DAOFactory.getCreditCardDAO();
 			int ccId = c1.displayCreditCard(creditCard.getCardNo(),creditCard.getExpiryDate(),creditCard.getCvvNo());
 			if(ccId>0) {
