@@ -42,9 +42,21 @@ public class CreditCardService {
 		}
 		return false;
 	}
-	public static boolean pay(CreditCard creditCard,float amount,String merchantId) throws Exception {
-		boolean validate=CreditCardValidator.validateCreditCard(creditCard.getCardNo(), creditCard.getExpiryDate(), creditCard.getCvvNo());
-		boolean validate1=CreditCardValidator.validateCreditCard(creditCard.getCardNo(), creditCard.getPin());
+	public static boolean pay(CreditCard creditCard,float amount,String merchantId)  {
+		boolean validate = false;
+		try {
+			validate = CreditCardValidator.validateCreditCard(creditCard.getCardNo(), creditCard.getExpiryDate(), creditCard.getCvvNo());
+		} catch (ValidateException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		boolean validate1 = false;
+		try {
+			validate1 = CreditCardValidator.validateCreditCard(creditCard.getCardNo(), creditCard.getPin());
+		} catch (ValidateException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		boolean result=false;
 		if(validate==true && validate1==true) {
 			CreditCardDAO c1=DAOFactory.getCreditCardDAO();
@@ -63,7 +75,10 @@ public class CreditCardService {
 					result=true;
 				}
 			}
+			catch(Exception e) {
+				LOGGER.error(e);
 			}
+		}
 		}
 	
 		return result;
