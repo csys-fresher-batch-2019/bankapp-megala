@@ -13,7 +13,7 @@ public class TestDisplayCreditCard1 {
 		int id = 0;
 		try {
 			id = dao.displayCreditCard(9999999999999999L,LocalDate.parse("2020-02-30"),123);
-		} catch (ClassNotFoundException e) {
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
