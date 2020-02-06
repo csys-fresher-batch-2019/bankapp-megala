@@ -1,4 +1,4 @@
-package creditcardtransaction;
+package creditcardtrans;
 
 import java.util.List;
 
