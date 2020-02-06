@@ -47,13 +47,13 @@ public class CreditCardService {
 		try {
 			validate = CreditCardValidator.validateCreditCard(creditCard.getCardNo(), creditCard.getExpiryDate(), creditCard.getCvvNo());
 		} catch (ValidateException e) {
-			e.printStackTrace();
+			LOGGER.error(e);
 		}
 		boolean validate1 = false;
 		try {
 			validate1 = CreditCardValidator.validateCreditCard(creditCard.getCardNo(), creditCard.getPin());
 		} catch (ValidateException e) {
-			e.printStackTrace();
+			LOGGER.error(e);
 		}
 		boolean result=false;
 		if(validate && validate1) {
