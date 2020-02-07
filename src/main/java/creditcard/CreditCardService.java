@@ -50,13 +50,13 @@ public class CreditCardService {
 			LOGGER.error(e);
 		}
 		boolean validate1 = false;
-		try {
-			validate1 = CreditCardValidator.validateCreditCard(creditCard.getCardNo(), creditCard.getPin());
-		} catch (ValidateException e) {
-			LOGGER.error(e);
-		}
+//		try {
+//			validate1 = CreditCardValidator.validateCreditCard(creditCard.getCardNo(), creditCard.getPin());
+//		} catch (ValidateException e) {
+//			LOGGER.error(e);
+//		}
 		boolean result=false;
-		if(validate && validate1) {
+		if(validate || validate1) {
 			CreditCardDAO c1=DAOFactory.getCreditCardDAO();
 			int ccId = c1.displayCreditCard(creditCard.getCardNo(),creditCard.getExpiryDate(),creditCard.getCvvNo());
 			if(ccId>0) {
