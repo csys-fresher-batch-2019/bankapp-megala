@@ -59,7 +59,7 @@ public class CreditCardDAOImpl implements CreditCardDAO {
 	public List<CreditCard> displayCreditCards()  {
 		List<CreditCard> c= new ArrayList<>();
 
-		String sql ="select credit_card_no,acc_no,limit_no,expiry_date from credit_card";
+		String sql ="select credit_card_no,acc_no,card_limit,expiry_date from credit_card";
 		LOGGER.info(sql);
 
 		try(Connection con = ConnectionUtil.getconnection();
@@ -69,7 +69,7 @@ public class CreditCardDAOImpl implements CreditCardDAO {
 		while (rows.next()) {
 			long creditCardNo = rows.getLong("credit_card_no");
 			String accNo = rows.getString("acc_no");
-			String limitNo=rows.getString("limit_no");
+			String limitNo=rows.getString("card_limit");
 			LocalDate expiryDate = rows.getDate("expiry_date").toLocalDate();
 			LOGGER.debug(creditCardNo);
 			LOGGER.debug(accNo);
@@ -121,5 +121,25 @@ public class CreditCardDAOImpl implements CreditCardDAO {
 		LOGGER.error(e);
 	}
 
+	}
+	
+	public float displayBalance(long cardNo) {
+		String sql ="select available_balance from credit_card where credit_card_no=?";
+		float availableBalance = 0;
+		try (
+			Connection con = ConnectionUtil.getconnection();
+			PreparedStatement pst = con.prepareStatement(sql)){
+			pst.setLong(1,cardNo);
+			
+			try(ResultSet rs = pst.executeQuery()){
+			if (rs.next()) {
+				availableBalance = rs.getFloat("available_balance");
+			}
+		}
+		}catch (Exception e) {
+			
+			LOGGER.error(e);
+		}
+		return availableBalance;
 	}
 }

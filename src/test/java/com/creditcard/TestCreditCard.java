@@ -12,7 +12,7 @@ public class TestCreditCard {
 		creditCard.setCardNo(1111111111111111L);
 		creditCard.setExpiryDate(LocalDate.parse("2020-09-08"));
 		creditCard.setCvvNo(123);
-//		creditCard.setPin(1234);
+		//creditCard.setPin(1234);
 		
 	
 			try {

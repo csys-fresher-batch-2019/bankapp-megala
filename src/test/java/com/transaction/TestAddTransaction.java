@@ -1,6 +1,5 @@
 package com.transaction;
 
-import java.time.LocalDateTime;
 import java.util.Scanner;
 
 import factory.DAOFactory;
@@ -16,10 +15,10 @@ public class TestAddTransaction {
 		Scanner s1=new Scanner(System.in);
 		LOGGER.getInput("Enter transactionId:"); 
 		c1.setTransactionId(s1.nextInt());
+		LOGGER.getInput("Enter accountId:"); 
+		c1.setAccNo(s1.nextInt());
 		LOGGER.getInput("Enter beneficiaryNo:");
 		c1.setBeneficiaryAccNo(s1.nextInt());
-		LOGGER.getInput("Enter transactionDate:");
-		c1.setTransactionDate(LocalDateTime.parse(s1.next()));
 		LOGGER.getInput("Enter transactionAmount:");
 		c1.setTransactionAmount(s1.nextInt());
 		
@@ -27,11 +26,11 @@ public class TestAddTransaction {
 		Transaction c2 = new Transaction();
 		LOGGER.getInput("Enter transactionId:");
 		c2.setTransactionId(s1.nextInt());
+		LOGGER.getInput("Enter accountId:"); 
+		c1.setAccNo(s1.nextInt());
 		LOGGER.getInput("Enter beneficiaryNo:");
 		c2.setBeneficiaryAccNo(s1.nextInt());
 		LOGGER.getInput("Enter transactionDate:");
-		c2.setTransactionDate(LocalDateTime.parse(s1.next()));
-		LOGGER.getInput("Enter transactionAmount:");
 		c2.setTransactionAmount(s1.nextInt());
 		
 

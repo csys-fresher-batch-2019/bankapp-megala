@@ -30,7 +30,26 @@ public class CreditCardService {
 		
 
 	}
-	
+	public static boolean checkLogin1(CreditCard creditCard)  {
+		boolean result = false;
+		try(Connection con = ConnectionUtil.getconnection();
+				CallableStatement stmt=con.prepareCall("{call login_procedure1(?,?,?)}")){
+				stmt.setLong(1, creditCard.getCardNo());
+				stmt.setInt(2, creditCard.getPin());
+				stmt.registerOutParameter(3, Types.VARCHAR);
+				stmt.executeUpdate();
+				String status=stmt.getString(3);
+					if(status.equals("Login Successfull"))
+					{
+						result=true;
+					}
+				}catch(Exception e) {
+					LOGGER.error(e);
+				}
+		
+		return result;
+
+	}
 	public static boolean validateCreditCard(long creditCardNo,int creditCardPin) {
 		try {
 			CreditCardValidator.validateCreditCard(creditCardNo,creditCardPin);
@@ -50,15 +69,17 @@ public class CreditCardService {
 			LOGGER.error(e);
 		}
 		boolean validate1 = false;
-//		try {
-//			validate1 = CreditCardValidator.validateCreditCard(creditCard.getCardNo(), creditCard.getPin());
-//		} catch (ValidateException e) {
-//			LOGGER.error(e);
-//		}
+		try {
+			validate1 = CreditCardValidator.validateCreditCard(creditCard.getCardNo(), creditCard.getPin());
+		} catch (ValidateException e) {
+			LOGGER.error(e);
+		}
 		boolean result=false;
 		if(validate || validate1) {
 			CreditCardDAO c1=DAOFactory.getCreditCardDAO();
-			int ccId = c1.displayCreditCard(creditCard.getCardNo(),creditCard.getExpiryDate(),creditCard.getCvvNo());
+			int ccId=0;
+			 ccId = c1.displayCreditCard(creditCard.getCardNo(),creditCard.getExpiryDate(),creditCard.getCvvNo());
+			
 			if(ccId>0) {
 			try(Connection con = ConnectionUtil.getconnection();
 			CallableStatement stmt=con.prepareCall("{call trans_procedure1(?,?,?,?)}")){
@@ -70,6 +91,7 @@ public class CreditCardService {
 			String status=stmt.getString(4);
 				if(status.equals("Transaction Successfull"))
 				{
+					LOGGER.info("Transaction successful");
 					result=true;
 				}
 			}
@@ -81,4 +103,5 @@ public class CreditCardService {
 	
 		return result;
 	}
-	}
+	
+}
