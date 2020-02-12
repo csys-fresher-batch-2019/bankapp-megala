@@ -120,5 +120,47 @@ public class CreditCardTransactionDAOImpl implements CreditCardTransactionDAO {
 		}
 		return history;
 	}
+	public List<CreditCardTransaction> displayTransactionHistoryByCardId(int cardId) {
+		List<CreditCardTransaction> history= new ArrayList<>();
+		String sql ="select card_id,transaction_id,amount,description_1,transaction_date,status from credit_card_transaction where card_id=?";
+		LOGGER.info(sql);
+		try (
+			Connection con = ConnectionUtil.getconnection();
+			PreparedStatement pst = con.prepareStatement(sql)){
+			pst.setInt(1,cardId);
+		
+			
+			try(ResultSet rs = pst.executeQuery()){
+
+				while (rs.next()) {
+					int creditCardId=rs.getInt("card_id");
+					int transactionId = rs.getInt("transaction_id");
+					int balance=rs.getInt("amount");
+					String description1=rs.getString("description_1");
+					Timestamp transactionDate = rs.getTimestamp("transaction_date");
+					String status=rs.getString("status");
+					LOGGER.debug(creditCardId);
+					LOGGER.debug(transactionId);
+					LOGGER.debug(balance);
+					LOGGER.debug(description1);
+					LOGGER.debug(transactionDate);
+					LOGGER.debug(status);
+					CreditCardTransaction creditCardTransaction=new CreditCardTransaction();
+					creditCardTransaction.setCardId(creditCardId);
+					creditCardTransaction.setTransactionId(transactionId);
+					creditCardTransaction.setMerchantId(description1);
+					creditCardTransaction.setAmount(balance);
+					creditCardTransaction.setTransactionDate(transactionDate);
+					creditCardTransaction.setStatus(status);
+					history.add(creditCardTransaction);
+		}
+			}
+		}catch (Exception e) {
+			
+			LOGGER.error(e);
+		}
+		return history;
+	}
+	
 	
 	}

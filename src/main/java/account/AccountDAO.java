@@ -7,7 +7,7 @@ public interface AccountDAO {
 	public List<Account> displayAcc();
 	public void updateAccount(int id, int accNo) ;
 	public void deleteAccount(int accNo) ;
-	public void searchByAccountNo(int accNo) ;
+	public List<Account> searchByAccountNo(int accNo) ;
 	public void displayAccount1(int id) ;
 	public void displayBalance(int accNo) ;
 	

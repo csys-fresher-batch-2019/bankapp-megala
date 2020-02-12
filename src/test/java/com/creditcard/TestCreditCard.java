@@ -4,6 +4,7 @@ import java.time.LocalDate;
 
 import creditcard.CreditCard;
 import creditcard.CreditCardService;
+import creditcard.PaymentResponse;
 
 public class TestCreditCard {
 
@@ -12,15 +13,15 @@ public class TestCreditCard {
 		creditCard.setCardNo(1111111111111111L);
 		creditCard.setExpiryDate(LocalDate.parse("2020-09-08"));
 		creditCard.setCvvNo(123);
-		//creditCard.setPin(1234);
+		creditCard.setPin(1234);
 		
 	
 			try {
 				String id="superMarket";
-				boolean status=CreditCardService.pay(creditCard, 1000.244f,id);
-				System.out.println(status);
+				PaymentResponse obj=CreditCardService.pay(creditCard, 100,id);
+				System.out.println(obj.getTransactionId());
+				System.out.println(obj.isStatus());
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
 				
 				e.printStackTrace();
 			}

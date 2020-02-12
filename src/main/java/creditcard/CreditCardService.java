@@ -30,6 +30,8 @@ public class CreditCardService {
 		
 
 	}
+	
+	
 	public static boolean checkLogin1(CreditCard creditCard)  {
 		boolean result = false;
 		try(Connection con = ConnectionUtil.getconnection();
@@ -61,7 +63,9 @@ public class CreditCardService {
 		}
 		return false;
 	}
-	public static boolean pay(CreditCard creditCard,float amount,String merchantId)  {
+	public static PaymentResponse pay(CreditCard creditCard,float amount,String merchantId)  {
+		
+		PaymentResponse response = null;
 		boolean validate = false;
 		try {
 			validate = CreditCardValidator.validateCreditCard(creditCard.getCardNo(), creditCard.getExpiryDate(), creditCard.getCvvNo());
@@ -82,17 +86,27 @@ public class CreditCardService {
 			
 			if(ccId>0) {
 			try(Connection con = ConnectionUtil.getconnection();
-			CallableStatement stmt=con.prepareCall("{call trans_procedure1(?,?,?,?)}")){
+			CallableStatement stmt=con.prepareCall("{call trans_procedure1(?,?,?,?,?)}")){
 			stmt.setLong(1, creditCard.getCardNo());
 			stmt.setFloat(2,amount);
 			stmt.setString(3, merchantId);
 			stmt.registerOutParameter(4, Types.VARCHAR);
+			stmt.registerOutParameter(5, Types.INTEGER);
 			stmt.executeUpdate();
 			String status=stmt.getString(4);
+			Integer transactionId = stmt.getInt(5);
+			
+			response = new PaymentResponse();
+			
 				if(status.equals("Transaction Successfull"))
 				{
 					LOGGER.info("Transaction successful");
 					result=true;
+					response.setTransactionId(transactionId);
+					response.setStatus(result);
+				}
+				else {
+					response.setStatus(false);
 				}
 			}
 			catch(Exception e) {
@@ -101,7 +115,7 @@ public class CreditCardService {
 		}
 		}
 	
-		return result;
+		return response;
 	}
 	
 }

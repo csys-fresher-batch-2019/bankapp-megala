@@ -45,7 +45,7 @@ public class TransactionDAOImpl implements TransactionDAO {
 		try(ResultSet rows = stmt.executeQuery(sql)){
 
 		while (rows.next()) {
-			String transactionId = rows.getString("transaction_id");
+			int transactionId = rows.getInt("transaction_id");
 			int accNo=rows.getInt("acc_no");
 			int beneficiaryAccNo = rows.getInt("beneficiary_acc_no");
 			Timestamp transactionDate=rows.getTimestamp("transaction_date");
@@ -58,6 +58,13 @@ public class TransactionDAOImpl implements TransactionDAO {
 			LOGGER.debug(transactionAmount);
 			LOGGER.debug(status);
 			Transaction transaction=new Transaction();
+			transaction.setTransactionId(transactionId);
+			transaction.setAccNo(accNo);
+			transaction.setBeneficiaryAccNo(beneficiaryAccNo);
+			transaction.setTransactionDate(transactionDate);
+			transaction.setTransactionAmount(transactionAmount);
+			transaction.setStatus(status);
+			
 			t.add(transaction);
 		}
 		}

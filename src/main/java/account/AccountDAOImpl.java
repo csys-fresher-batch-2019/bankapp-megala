@@ -57,6 +57,10 @@ public class AccountDAOImpl implements AccountDAO {
 			LOGGER.getInput(availableBalance);
 			
 			Account account=new Account();
+			account.setCustomerId(customerId);
+			account.setAccNo(accNo);
+			account.setAccType(accType);
+			account.setAvailableBalance(availableBalance);
 			a.add(account);
 			
 		}
@@ -101,7 +105,8 @@ public class AccountDAOImpl implements AccountDAO {
 		}
 
 	}
-	public void searchByAccountNo(int accNo) {
+	public List<Account> searchByAccountNo(int accNo) {
+		List<Account> a = new ArrayList<>();
 		String sql = "select customer_id,acc_no,acc_type,available_balance from account_details where acc_no=?";
 		LOGGER.info(sql);
 		try(
@@ -112,10 +117,19 @@ public class AccountDAOImpl implements AccountDAO {
 		ResultSet rows = pst.executeQuery()){
 		if (rows.next()) {
 			int customerId = rows.getInt(ACTION1);
+			int accNumber=rows.getInt(ACTION3);
 			String accType=rows.getString(ACTION2);
 			int availableBalance = rows.getInt(ACTION4);
 			
+			Account account=new Account();
+			account.setCustomerId(customerId);
+			account.setAccNo(accNumber);
+			account.setAccType(accType);
+			account.setAvailableBalance(availableBalance);
+			a.add(account);
+			
 			LOGGER.getInput(customerId);
+			LOGGER.getInput(accNumber);
 			LOGGER.getInput(accType);
 			LOGGER.getInput(availableBalance);
 			
@@ -124,8 +138,8 @@ public class AccountDAOImpl implements AccountDAO {
 		}
 		catch(Exception e) {
 			LOGGER.error(e);
-}
-
+		}
+		return a;
 
 	}
 	
