@@ -18,7 +18,8 @@ public class TestCreditCard {
 	
 			try {
 				String id="superMarket";
-				PaymentResponse obj=CreditCardService.pay(creditCard, 100,id);
+				String comments="Amount refunded";
+				PaymentResponse obj=CreditCardService.pay(creditCard, 100,id,comments);
 				System.out.println(obj.getTransactionId());
 				System.out.println(obj.isStatus());
 			} catch (Exception e) {

@@ -63,7 +63,37 @@ public class CreditCardService {
 		}
 		return false;
 	}
-	public static PaymentResponse pay(CreditCard creditCard,float amount,String merchantId)  {
+	
+	public boolean refundAmount(int transactionId,float amount,String comments) {
+		boolean result=false;
+		try(Connection con = ConnectionUtil.getconnection();
+				CallableStatement stmt=con.prepareCall("{call refund_procedure(?,?,?,?)}")){
+				stmt.setInt(1, transactionId);
+				stmt.setFloat(2,amount);
+				stmt.setString(3, comments);
+				stmt.registerOutParameter(4, Types.VARCHAR);
+				stmt.executeUpdate();
+				String status=stmt.getString(4);
+					if(status.equals("Amount Refunded"))
+					{
+						LOGGER.info("Amount successfully refunded");
+						result=true;
+						LOGGER.debug(result);
+				
+					}
+					else {
+						LOGGER.info("Amount refund failed");
+
+					}
+				}
+				catch(Exception e) {
+					LOGGER.error(e);
+				}
+		
+
+		return false;
+	}
+	public static PaymentResponse pay(CreditCard creditCard,float amount,String merchantId,String comments)  {
 		
 		PaymentResponse response = null;
 		boolean validate = false;
@@ -86,15 +116,16 @@ public class CreditCardService {
 			
 			if(ccId>0) {
 			try(Connection con = ConnectionUtil.getconnection();
-			CallableStatement stmt=con.prepareCall("{call trans_procedure1(?,?,?,?,?)}")){
+			CallableStatement stmt=con.prepareCall("{call trans_procedure1(?,?,?,?,?,?)}")){
 			stmt.setLong(1, creditCard.getCardNo());
 			stmt.setFloat(2,amount);
 			stmt.setString(3, merchantId);
-			stmt.registerOutParameter(4, Types.VARCHAR);
-			stmt.registerOutParameter(5, Types.INTEGER);
+			stmt.setString(4, comments);
+			stmt.registerOutParameter(5, Types.VARCHAR);
+			stmt.registerOutParameter(6, Types.INTEGER);
 			stmt.executeUpdate();
-			String status=stmt.getString(4);
-			Integer transactionId = stmt.getInt(5);
+			String status=stmt.getString(5);
+			Integer transactionId = stmt.getInt(6);
 			
 			response = new PaymentResponse();
 			
