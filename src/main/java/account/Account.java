@@ -2,7 +2,7 @@ package account;
 
 public class Account {
 	private int customerId;
-	private int accNo;
+	private long accNo;
 	private String accType;
 	private int availableBalance;
 	public int getCustomerId() {
@@ -14,12 +14,7 @@ public class Account {
 		}
 		this.customerId = customerId;
 	}
-	public int getAccNo() {
-		return accNo;
-	}
-	public void setAccNo(int accNo) {
-		this.accNo = accNo;
-	}
+	
 	public String getAccType() {
 		return accType;
 	}
@@ -31,6 +26,12 @@ public class Account {
 	}
 	public void setAvailableBalance(int availableBalance) {
 		this.availableBalance = availableBalance;
+	}
+	public long getAccNo() {
+		return accNo;
+	}
+	public void setAccNo(long accNo) {
+		this.accNo = accNo;
 	}
 
 }

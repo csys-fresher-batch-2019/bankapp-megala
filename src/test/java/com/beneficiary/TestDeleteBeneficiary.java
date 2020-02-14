@@ -12,7 +12,7 @@ public class TestDeleteBeneficiary {
 	public static void main(String[] args) {
 		Scanner s=new Scanner(System.in);
 		LOGGER.getInput("Enter accNo:");
-		int accNo=s.nextInt();
+		long accNo=s.nextLong();
 		BeneficiaryDAO dao=DAOFactory.getBeneficiaryDAO();
 		try {
 			dao.deleteBeneficiary(accNo);

@@ -18,7 +18,7 @@ public class BeneficiaryDAOImpl implements BeneficiaryDAO {
 		LOGGER.info(sql);
 		try (Connection con = ConnectionUtil.getconnection();PreparedStatement pst = con.prepareStatement(sql)){
 			pst.setString(1, beneficiary.getBeneficiaryName());
-			pst.setInt(2, beneficiary.getAccNo());
+			pst.setLong(2, beneficiary.getAccNo());
 			pst.setString(3, beneficiary.getiFSCCode());
 			int rows = pst.executeUpdate();
 			LOGGER.info("no of rows inserted:" + rows);
@@ -39,7 +39,7 @@ public class BeneficiaryDAOImpl implements BeneficiaryDAO {
 
 		while (rows.next()) {
 			String beneficiaryName = rows.getString("beneficiary_name");
-			int accNo = rows.getInt("acc_no_1");
+			long accNo = rows.getLong("acc_no_1");
 			String iFSCCode=rows.getString("IFSC_code");
 			LOGGER.getInput(beneficiaryName);
 			LOGGER.getInput(accNo);
@@ -56,14 +56,14 @@ public class BeneficiaryDAOImpl implements BeneficiaryDAO {
 		}
 		return b;
 	}
-	public void updateBeneficiary(String beneficiaryName,int accNo) {
+	public void updateBeneficiary(String beneficiaryName,long accNo) {
 		String sql = "update beneficiary_list set beneficiary_name=? where acc_no_1=?";
 		LOGGER.info(sql);
 
 		try(Connection con = ConnectionUtil.getconnection();
 		PreparedStatement pst = con.prepareStatement(sql)){
 		pst.setString(1, beneficiaryName);
-		pst.setInt (2, accNo);
+		pst.setLong (2, accNo);
 
 		int rows = pst.executeUpdate();
 		LOGGER.info("no of rows updated:"+rows);
@@ -73,14 +73,14 @@ public class BeneficiaryDAOImpl implements BeneficiaryDAO {
 
 		}
 	}
-	public void deleteBeneficiary(int accNo) {
+	public void deleteBeneficiary(long accNo) {
 		String sql = "delete from beneficiary_list where acc_no_1=?";
 		LOGGER.info(sql);
 		
 		try (
 			Connection con = ConnectionUtil.getconnection();
 			PreparedStatement pst = con.prepareStatement(sql)){
-			pst.setInt(1,accNo);
+			pst.setLong(1,accNo);
 
 			int rows = pst.executeUpdate();
 			LOGGER.info("no of rows deleted:" + rows);

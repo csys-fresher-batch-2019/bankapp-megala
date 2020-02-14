@@ -23,15 +23,16 @@ public class TestLoadCustomer {
 			
 			String[] row=line.split(",");
 			String name= row[0];
-			int id=Integer.parseInt(row[1]);  //type casting to int
-			String street=row[2];
-			String city=row[3];
+//			int id=Integer.parseInt(row[1]);  //type casting to int
+			String street=row[1];
+			String city=row[2];
+			String pass=row[3];
 			
 			Customer customer=new Customer();
 			customer.setName(name);
-			customer.setId(id);
 			customer.setStreet(street);
 			customer.setCity(city);
+			customer.setPassword(pass);
 			System.out.println(customer);
 			
 			daoImpl.addCustomer(customer);

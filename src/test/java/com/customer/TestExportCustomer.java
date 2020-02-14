@@ -17,7 +17,7 @@ public class TestExportCustomer {
 		//Path path=Paths.get(fileName);
 		//List<String> lines=Files.readAllLines(path);
 		for(Customer customer:display) {
-			String line = customer.getId()+","+customer.getName()+","+customer.getCity();
+			String line = customer.getId()+","+customer.getName()+","+customer.getStreet()+","+customer.getCity()+","+customer.getPassword();
 			
 			fileContent = fileContent+line+"\n";
 			

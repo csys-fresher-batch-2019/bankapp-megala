@@ -5,6 +5,6 @@ import java.util.List;
 public interface TransactionDAO {
 	public void addTransaction(Transaction transaction) ;
 	public List<Transaction> displayTransaction() ;
-	public void updateTransaction(int transactionAmount,int transactionId) ;
-	public void deleteTransaction(int transactionId) ; 
+	public void updateTransaction(int transactionAmount,long beneficiaryAccNo) ;
+	public void deleteTransaction(long beneficiaryAccNo) ; 
 }

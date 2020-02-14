@@ -22,7 +22,7 @@ public class TestAddCreditCard {
 			LOGGER.getInput("Enter creditCardPin:");
 			c1.setPin(s.nextInt());
 			LOGGER.getInput("Enter accNo:");
-			c1.setAccNo(s.nextInt());
+			c1.setAccNo(s.nextLong());
 			LOGGER.getInput("Enter limitNo:");
 			c1.setLimitNo(s.nextInt());
 			LOGGER.getInput("Enter cvvNo:");
@@ -39,7 +39,7 @@ public class TestAddCreditCard {
 			LOGGER.getInput("Enter creditCardPin:");
 			c2.setPin(s.nextInt());
 			LOGGER.getInput("Enter accNo:");
-			c2.setAccNo(s.nextInt());
+			c2.setAccNo(s.nextLong());
 			LOGGER.getInput("Enter limitNo:");
 			c2.setLimitNo(s.nextInt());
 			LOGGER.getInput("Enter cvvNo:");
@@ -56,7 +56,7 @@ public class TestAddCreditCard {
 			LOGGER.getInput("Enter creditCardPin:");
 			c3.setPin(s.nextInt());
 			LOGGER.getInput("Enter accNo:");
-			c3.setAccNo(s.nextInt());
+			c3.setAccNo(s.nextLong());
 			LOGGER.getInput("Enter limitNo:");
 			c3.setLimitNo(s.nextInt());
 			LOGGER.getInput("Enter cvvNo:");

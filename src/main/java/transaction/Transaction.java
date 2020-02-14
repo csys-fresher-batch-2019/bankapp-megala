@@ -6,8 +6,8 @@ import java.time.LocalDateTime;
 
 public class Transaction {
 	private int transactionId;
-	private int accNo;
-	private int beneficiaryAccNo;
+	private long accNo;
+	private long beneficiaryAccNo;
 	private Timestamp transactionDate=Timestamp.valueOf(LocalDateTime.now());
 	private int transactionAmount;
 	private String status="debit"; 
@@ -17,10 +17,10 @@ public class Transaction {
 	public void setTransactionId(int transactionId) {
 		this.transactionId = transactionId;
 	}
-	public int getBeneficiaryAccNo() {
+	public long getBeneficiaryAccNo() {
 		return beneficiaryAccNo;
 	}
-	public void setBeneficiaryAccNo(int beneficiaryAccNo) {
+	public void setBeneficiaryAccNo(long beneficiaryAccNo) {
 		this.beneficiaryAccNo = beneficiaryAccNo;
 	}
 	public Timestamp getTransactionDate() {
@@ -35,10 +35,10 @@ public class Transaction {
 	public void setTransactionAmount(int transactionAmount) {
 		this.transactionAmount = transactionAmount;
 	}
-	public int getAccNo() {
+	public long getAccNo() {
 		return accNo;
 	}
-	public void setAccNo(int accNo) {
+	public void setAccNo(long accNo) {
 		this.accNo = accNo;
 	}
 	public String getStatus() {

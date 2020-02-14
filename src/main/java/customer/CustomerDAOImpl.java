@@ -14,15 +14,18 @@ public class CustomerDAOImpl implements CustomerDAO{
 	private static final Logger LOGGER = Logger.getInstance();
 
 	public void addCustomer(Customer customer) {
-		String sql = "insert into customer_details(customer_name,customer_id,customer_street,customer_city)values(?,?,?,?)";
+		String sql = "insert into customer_details(customer_name,customer_id,customer_street,customer_city,mobile_no,email,password,acc_type)values(?,customer_id_seq.nextval,?,?,?,?,?,?)";
 		LOGGER.info(sql);
 		try (
 			Connection con = ConnectionUtil.getconnection();
 			PreparedStatement pst = con.prepareStatement(sql)){
 			pst.setString(1, customer.getName());
-			pst.setInt(2, customer.getId());
-			pst.setString(3, customer.getStreet());
-			pst.setString(4, customer.getCity());
+			pst.setString(2, customer.getStreet());
+			pst.setString(3, customer.getCity());
+			pst.setLong(4, customer.getMobileNo());
+			pst.setString(5, customer.getEmail());
+			pst.setString(6, customer.getPassword());
+			pst.setString(7, customer.getAccType());
 			int rows = pst.executeUpdate();
 			LOGGER.info("no of rows inserted:" + rows);
 		} catch (Exception e) {
@@ -34,23 +37,28 @@ public class CustomerDAOImpl implements CustomerDAO{
 	public List<Customer> display()  {
 		List<Customer> c = new ArrayList<>();
 
-		String sql = "select customer_name,customer_id,customer_street,customer_city from customer_details";
+		String sql = "select customer_name,customer_id,customer_street,customer_city,mobile_no,email,password from customer_details";
 		LOGGER.info(sql);
 
 		try(Connection con = ConnectionUtil.getconnection();
 		Statement stmt = con.createStatement()){
 		try(ResultSet rows = stmt.executeQuery(sql)){
-			LOGGER.info("No of rows displyed:"+rows);
 
 		while (rows.next()) {
 			String name = rows.getString("customer_name");
 			int id = rows.getInt("customer_id");
 			String street=rows.getString("customer_street");
 			String city = rows.getString("customer_city");
+			long mbleNo=rows.getLong("mobile_no");
+			String mail=rows.getString("email");
+			String password=rows.getString("password");
 			LOGGER.debug(name);
 			LOGGER.debug(id);
 			LOGGER.debug(street);
 			LOGGER.debug(city);
+			LOGGER.debug(mbleNo);
+			LOGGER.debug(mail);
+			LOGGER.debug(password);
 			Customer customer=new Customer();
 			c.add(customer);
 		}

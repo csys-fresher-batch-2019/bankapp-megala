@@ -24,7 +24,7 @@ public class AccountDAOImpl implements AccountDAO {
 		try(Connection con = ConnectionUtil.getconnection();
 			PreparedStatement pst = con.prepareStatement(sql)) {
 			pst.setInt(1, account.getCustomerId());
-			pst.setInt(2, account.getAccNo());
+			pst.setLong(2, account.getAccNo());
 			pst.setString(3, account.getAccType());
 			pst.setInt(4, account.getAvailableBalance());
 			int rows = pst.executeUpdate();
@@ -47,7 +47,7 @@ public class AccountDAOImpl implements AccountDAO {
 
 		while (rows.next()) {
 			int customerId = rows.getInt(ACTION1);
-			int accNo = rows.getInt(ACTION3);
+			long accNo = rows.getLong(ACTION3);
 			String accType = rows.getString(ACTION2);
 			int availableBalance = rows.getInt(ACTION4);
 
@@ -72,13 +72,13 @@ public class AccountDAOImpl implements AccountDAO {
 		return a;
 	
 	}
-	public void updateAccount( int accNo,int id) {
+	public void updateAccount( long accNo,int id) {
 		String sql = "update account_details set acc_no=? where customer_id=?";
 		LOGGER.info(sql);
 
 		try(Connection con = ConnectionUtil.getconnection();
 		PreparedStatement pst = con.prepareStatement(sql)){
-		pst.setInt(1,accNo );
+		pst.setLong(1,accNo );
 		pst.setInt(2, id);
 
 		int rows = pst.executeUpdate();
@@ -88,14 +88,14 @@ public class AccountDAOImpl implements AccountDAO {
 			LOGGER.error(e);
 		}
 	}
-	public void deleteAccount(int accNo) {
+	public void deleteAccount(long accNo) {
 		String sql = "delete from account_details where acc_no=?";
 		LOGGER.info(sql);
 		
 		try (
 			Connection con = ConnectionUtil.getconnection();
 			PreparedStatement pst = con.prepareStatement(sql)){
-			pst.setInt(1,accNo);
+			pst.setLong(1,accNo);
 
 			int rows = pst.executeUpdate();
 			LOGGER.info("no of rows deleted:" + rows);
@@ -105,19 +105,19 @@ public class AccountDAOImpl implements AccountDAO {
 		}
 
 	}
-	public List<Account> searchByAccountNo(int accNo) {
+	public List<Account> searchByAccountNo(long accNo) {
 		List<Account> a = new ArrayList<>();
 		String sql = "select customer_id,acc_no,acc_type,available_balance from account_details where acc_no=?";
 		LOGGER.info(sql);
 		try(
 		Connection con = ConnectionUtil.getconnection();
 		PreparedStatement pst = con.prepareStatement(sql)){
-		pst.setInt(1,accNo );
+		pst.setLong(1,accNo );
 		try(
 		ResultSet rows = pst.executeQuery()){
 		if (rows.next()) {
 			int customerId = rows.getInt(ACTION1);
-			int accNumber=rows.getInt(ACTION3);
+			long accNumber=rows.getLong(ACTION3);
 			String accType=rows.getString(ACTION2);
 			int availableBalance = rows.getInt(ACTION4);
 			
@@ -151,7 +151,7 @@ public class AccountDAOImpl implements AccountDAO {
 		pst.setInt(1,id);
 		try(ResultSet rows = pst.executeQuery()){
 		if (rows.next()) {
-			int accNo = rows.getInt(ACTION3);
+			long accNo = rows.getLong(ACTION3);
 			String accType=rows.getString(ACTION2);
 			int availableBalance = rows.getInt(ACTION4);
 			
@@ -166,12 +166,12 @@ public class AccountDAOImpl implements AccountDAO {
 		}
 }
 	
-	public void displayBalance(int accNo) {
+	public void displayBalance(long accNo) {
 		String sql = "select available_balance from account_details where acc_no=?";
 		LOGGER.info(sql);
 		try(Connection con = ConnectionUtil.getconnection();
 		PreparedStatement pst = con.prepareStatement(sql)){
-		pst.setInt(1,accNo);
+		pst.setLong(1,accNo);
 		try(ResultSet rows = pst.executeQuery()){
 		if (rows.next()) {
 			int availableBalance = rows.getInt(ACTION4);

@@ -7,7 +7,7 @@ public class CreditCard {
 	private int creditcardId;
 	private long cardNo;
 	private int pin;
-	private int accNo;
+	private long accNo;
 	private int limitNo;
 	private LocalDate expiryDate;
 	private int cvvNo;
@@ -32,10 +32,10 @@ public class CreditCard {
 	public void setCvvNo(int cvvNo) {
 		this.cvvNo = cvvNo;
 	}
-	public int getAccNo() {
+	public long getAccNo() {
 		return accNo;
 	}
-	public void setAccNo(int accNo) {
+	public void setAccNo(long accNo) {
 		this.accNo = accNo;
 	}
 	public int getLimitNo() {

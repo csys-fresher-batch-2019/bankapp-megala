@@ -22,7 +22,7 @@ public class CreditCardDAOImpl implements CreditCardDAO {
 			PreparedStatement pst = con.prepareStatement(sql)){
 			pst.setLong(1, creditCard.getCardNo());
 			pst.setInt(2, creditCard.getPin());
-			pst.setInt(3, creditCard.getAccNo());
+			pst.setLong(3, creditCard.getAccNo());
 			pst.setInt(4, creditCard.getLimitNo());
 			pst.setInt(5, creditCard.getCvvNo());
 			pst.setDate(6, Date.valueOf(creditCard.getExpiryDate()));
@@ -36,7 +36,6 @@ public class CreditCardDAOImpl implements CreditCardDAO {
 }
 	public int displayCreditCard(long cardNo,LocalDate expiryDate,int cvvNo) {
 		String sql ="select credit_card_id from credit_card where credit_card_no=? and expiry_date=? and cvv_no=? ";
-		LOGGER.info(sql);
 		int creditCardId = 0;
 		try (
 			Connection con = ConnectionUtil.getconnection();
@@ -68,7 +67,7 @@ public class CreditCardDAOImpl implements CreditCardDAO {
 
 		while (rows.next()) {
 			long creditCardNo = rows.getLong("credit_card_no");
-			String accNo = rows.getString("acc_no");
+			long accNo = rows.getLong("acc_no");
 			String limitNo=rows.getString("card_limit");
 			LocalDate expiryDate = rows.getDate("expiry_date").toLocalDate();
 			LOGGER.debug(creditCardNo);
@@ -87,14 +86,14 @@ public class CreditCardDAOImpl implements CreditCardDAO {
 		return c;
 	}
 	
-	public void deleteCreditCard(String accNo) {
+	public void deleteCreditCard(long accNo) {
 		String sql = "delete from credit_card where acc_no=?";
 		LOGGER.info(sql);
 		
 		try (
 			Connection con = ConnectionUtil.getconnection();
 			PreparedStatement pst = con.prepareStatement(sql)){
-			pst.setString(1,accNo);
+			pst.setLong(1,accNo);
 
 			int rows = pst.executeUpdate();
 			LOGGER.info("no of rows deleted:" + rows);

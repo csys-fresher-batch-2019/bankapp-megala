@@ -5,6 +5,8 @@ import java.sql.Connection;
 import java.sql.Types;
 import java.time.LocalDate;
 import bank.util.ConnectionUtil;
+import customer.Customer;
+import customer.Register;
 import factory.DAOFactory;
 import logger.Logger;
 
@@ -64,7 +66,7 @@ public class CreditCardService {
 		return false;
 	}
 	
-	public boolean refundAmount(int transactionId,float amount,String comments) {
+	public static boolean refundAmount(int transactionId,float amount,String comments) {
 		boolean result=false;
 		try(Connection con = ConnectionUtil.getconnection();
 				CallableStatement stmt=con.prepareCall("{call refund_procedure(?,?,?,?)}")){
@@ -91,7 +93,35 @@ public class CreditCardService {
 				}
 		
 
-		return false;
+		return result;
+	}
+	public static boolean login(String email,String password) {
+		boolean result=false;
+		try(Connection con = ConnectionUtil.getconnection();
+				CallableStatement stmt=con.prepareCall("{call login_procedure(?,?,?)}")){
+				stmt.setString(1, email);
+				stmt.setString(2,password);
+				stmt.registerOutParameter(3, Types.VARCHAR);
+				stmt.executeUpdate();
+				String status=stmt.getString(3);
+					if(status.equals("Login Successfull"))
+					{
+						LOGGER.info("Login Successfull");
+						result=true;
+						
+				
+					}
+					else {
+						LOGGER.info("Login failed");
+
+					}
+				}
+				catch(Exception e) {
+					LOGGER.error(e);
+				}
+		
+
+		return result;
 	}
 	public static PaymentResponse pay(CreditCard creditCard,float amount,String merchantId,String comments)  {
 		
@@ -138,6 +168,7 @@ public class CreditCardService {
 				}
 				else {
 					response.setStatus(false);
+					LOGGER.debug(response);
 				}
 			}
 			catch(Exception e) {
@@ -148,5 +179,46 @@ public class CreditCardService {
 	
 		return response;
 	}
+	public static Register register(Customer c) {
+		Register reg=null;
+		boolean result=false;
+		try(Connection con = ConnectionUtil.getconnection();
+				CallableStatement stmt=con.prepareCall("{call register_procedure(?,?,?,?,?,?,?,?,?)}")){
+				stmt.setString(1, c.getName());
+				stmt.setString(2,c.getStreet());
+				stmt.setString(3, c.getCity());
+				stmt.setLong(4, c.getMobileNo());
+				stmt.setString(5, c.getEmail());
+				stmt.setString(6, c.getPassword());
+				stmt.setString(7,c.getAccType());
+				stmt.registerOutParameter(8, Types.INTEGER);
+				stmt.registerOutParameter(9, Types.VARCHAR);
+				stmt.executeUpdate();
+				String output=stmt.getString(9);
+				long accountNo=stmt.getLong(8);
+				
+				reg = new Register();
+				
+					if(output.equals("registered"))
+					{
+						LOGGER.info("Registered Successfully");
+						result=true;
+						reg.setAccNo(accountNo);
+						reg.setStatus(result);
+				
+					}
+					else {
+						LOGGER.info("Registration failed");
+						reg.setStatus(result);
+					}
+				}
+				catch(Exception e) {
+					LOGGER.error(e);
+				}
+		
+
+		return reg;
+	}
+
 	
 }

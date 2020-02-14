@@ -22,8 +22,8 @@ public class TransactionDAOImpl implements TransactionDAO {
 				CallableStatement pst=con.prepareCall("{call fund_transfer_procedure(?,?,?,?,?)}")){
 
 			pst.setInt(1, transaction.getTransactionId());
-			pst.setInt(2, transaction.getAccNo());
-			pst.setInt(3, transaction.getBeneficiaryAccNo());
+			pst.setLong(2, transaction.getAccNo());
+			pst.setLong(3, transaction.getBeneficiaryAccNo());
 			pst.setInt(4, transaction.getTransactionAmount());
 			pst.registerOutParameter(5, Types.VARCHAR);
 			pst.executeUpdate();
@@ -46,8 +46,8 @@ public class TransactionDAOImpl implements TransactionDAO {
 
 		while (rows.next()) {
 			int transactionId = rows.getInt("transaction_id");
-			int accNo=rows.getInt("acc_no");
-			int beneficiaryAccNo = rows.getInt("beneficiary_acc_no");
+			long accNo=rows.getLong("acc_no");
+			long beneficiaryAccNo = rows.getLong("beneficiary_acc_no");
 			Timestamp transactionDate=rows.getTimestamp("transaction_date");
 			int transactionAmount=rows.getInt("transaction_amount");
 			String status=rows.getString("status");
@@ -75,14 +75,14 @@ public class TransactionDAOImpl implements TransactionDAO {
 		
 		return t;
 	}
-	public void updateTransaction(int transactionAmount,int beneficiaryAccNo) {
+	public void updateTransaction(int transactionAmount,long beneficiaryAccNo) {
 		String sql = "update transaction_details set transaction_amount=? where beneficiary_acc_no=?";
 		LOGGER.info(sql);
 
 		try(Connection con = ConnectionUtil.getconnection();
 		PreparedStatement pst = con.prepareStatement(sql)){
 		pst.setInt(1, transactionAmount);
-		pst.setInt (2, beneficiaryAccNo);
+		pst.setLong (2, beneficiaryAccNo);
 
 		int rows = pst.executeUpdate();
 		LOGGER.info("no of rows updated:"+rows);
@@ -91,14 +91,14 @@ public class TransactionDAOImpl implements TransactionDAO {
 		LOGGER.error(e);
 	}
 	}
-	public void deleteTransaction(int beneficiaryAccNo){
+	public void deleteTransaction(long beneficiaryAccNo){
 		String sql = "delete from transaction_details where beneficiary_acc_no=?";
 		LOGGER.info(sql);
 		
 		try 
 			(Connection con = ConnectionUtil.getconnection();
 			PreparedStatement pst = con.prepareStatement(sql)){
-			pst.setInt(1,beneficiaryAccNo);
+			pst.setLong(1,beneficiaryAccNo);
 
 			int rows = pst.executeUpdate();
 			LOGGER.info("no of rows deleted:" + rows);

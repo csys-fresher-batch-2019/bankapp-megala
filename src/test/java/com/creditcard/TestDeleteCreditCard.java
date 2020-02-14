@@ -13,7 +13,7 @@ public class TestDeleteCreditCard {
 	public static void main(String[] args) {
 		Scanner s=new Scanner(System.in);
 		LOGGER.getInput("Enter accNo:");
-		String accNo=s.next();
+		long accNo=s.nextLong();
 		CreditCardDAO dao = DAOFactory.getCreditCardDAO();
 		try {
 			dao.deleteCreditCard(accNo);

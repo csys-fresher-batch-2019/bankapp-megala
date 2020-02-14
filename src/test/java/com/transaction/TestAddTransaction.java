@@ -13,26 +13,22 @@ public class TestAddTransaction {
 	public static void main(String[] args) throws Exception {
 		Transaction c1 = new Transaction(); 
 		Scanner s1=new Scanner(System.in);
-		LOGGER.getInput("Enter transactionId:"); 
-		c1.setTransactionId(s1.nextInt());
 		LOGGER.getInput("Enter accountId:"); 
 		c1.setAccNo(s1.nextInt());
 		LOGGER.getInput("Enter beneficiaryNo:");
-		c1.setBeneficiaryAccNo(s1.nextInt());
+		c1.setBeneficiaryAccNo(s1.nextLong());
 		LOGGER.getInput("Enter transactionAmount:");
 		c1.setTransactionAmount(s1.nextInt());
 		
 
-		Transaction c2 = new Transaction();
-		LOGGER.getInput("Enter transactionId:");
-		c2.setTransactionId(s1.nextInt());
-		LOGGER.getInput("Enter accountId:"); 
-		c1.setAccNo(s1.nextInt());
-		LOGGER.getInput("Enter beneficiaryNo:");
-		c2.setBeneficiaryAccNo(s1.nextInt());
-		LOGGER.getInput("Enter transactionDate:");
-		c2.setTransactionAmount(s1.nextInt());
-		
+//		Transaction c2 = new Transaction();
+//		LOGGER.getInput("Enter accountId:"); 
+//		c1.setAccNo(s1.nextInt());
+//		LOGGER.getInput("Enter beneficiaryNo:");
+//		c2.setBeneficiaryAccNo(s1.nextLong());
+//		LOGGER.getInput("Enter transactionAmount:");
+//		c1.setTransactionAmount(s1.nextInt());
+//		
 
 		/*Transaction c3 = new Transaction();
 		LocalDate expiryDate2 = LocalDate.parse("2022-12-12");
@@ -44,7 +40,8 @@ public class TestAddTransaction {
 */
 		TransactionDAO dao =DAOFactory.getTransactionDAO();
 		dao.addTransaction(c1);
-		dao.addTransaction(c2);
+//		
+
 
 	/*	TransactionDAOImpl dao2 = new TransactionDAOImpl();
 		dao2.addTransaction(c3);

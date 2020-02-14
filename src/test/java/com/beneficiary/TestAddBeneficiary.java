@@ -16,7 +16,7 @@ public class TestAddBeneficiary {
 		LOGGER.getInput("Enter beneficiary name:");
 		b1.setBeneficiaryName(s.next());
 		LOGGER.getInput("Enter beneficiary accNo:");
-		b1.setAccNo(s.nextInt());
+		b1.setAccNo(s.nextLong());
 		LOGGER.getInput("Enter IFSC code:");
 		b1.setiFSCCode(s.next());
 		
@@ -25,7 +25,7 @@ public class TestAddBeneficiary {
 		LOGGER.getInput("Enter beneficiary name:");
 		b2.setBeneficiaryName(s.next());
 		LOGGER.getInput("Enter beneficiary accNo:");
-		b2.setAccNo(s.nextInt());
+		b2.setAccNo(s.nextLong());
 		LOGGER.getInput("Enter IFSC code:");
 		b2.setiFSCCode(s.next());
 		
@@ -33,7 +33,7 @@ public class TestAddBeneficiary {
 		LOGGER.getInput("Enter beneficiary name:");
 		b3.setBeneficiaryName(s.next());
 		LOGGER.getInput("Enter beneficiary accNo:");
-		b3.setAccNo(s.nextInt());
+		b3.setAccNo(s.nextLong());
 		LOGGER.getInput("Enter IFSC code:");
 		b3.setiFSCCode(s.next());
 		

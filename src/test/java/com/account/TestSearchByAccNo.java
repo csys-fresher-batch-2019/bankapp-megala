@@ -13,7 +13,7 @@ public class TestSearchByAccNo {
 		// TODO Auto-generated method stub
 		Scanner s=new Scanner(System.in);
 		LOGGER.getInput("Enter accNo:");
-		int accNo=s.nextInt();
+		long accNo=s.nextLong();
 		AccountDAO dao=DAOFactory.getAccountDAO();
 		try {
 			dao.searchByAccountNo(accNo);

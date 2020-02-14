@@ -18,7 +18,7 @@ public class TestAddAccount {
 		LOGGER.getInput("Enter customerId:");
 		b1.setCustomerId(s.nextInt());
 		LOGGER.getInput("Enter accNo:");
-		b1.setAccNo(s.nextInt());
+		b1.setAccNo(s.nextLong());
 		LOGGER.getInput("Enter accType:");
 		b1.setAccType(s.next());
 		LOGGER.getInput("Enter availableBalance:");
@@ -28,7 +28,7 @@ public class TestAddAccount {
 		LOGGER.getInput("Enter customerId:");
 		b2.setCustomerId(s.nextInt());
 		LOGGER.getInput("Enter accNo:");
-		b2.setAccNo(s.nextInt());
+		b2.setAccNo(s.nextLong());
 		LOGGER.getInput("Enter accType:");
 		b2.setAccType(s.next());
 		LOGGER.getInput("availableBalance:");
@@ -38,7 +38,7 @@ public class TestAddAccount {
 		LOGGER.getInput("Enter customerId:");
 		b3.setCustomerId(s.nextInt());
 		LOGGER.getInput("Enter accNo:");
-		b3.setAccNo(s.nextInt());
+		b3.setAccNo(s.nextLong());
 		LOGGER.getInput("Enter accType:");
 		b3.setAccType(s.next());
 		LOGGER.getInput("availableBalance:");

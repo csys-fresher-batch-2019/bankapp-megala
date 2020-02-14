@@ -13,7 +13,7 @@ public class TestUpdateBeneficiary {
 		LOGGER.getInput("Enter name:");
 		String name=s.next();
 		LOGGER.getInput("Enter accNo:");
-		int accNo=s.nextInt();
+		long accNo=s.nextLong();
 		BeneficiaryDAO dao=DAOFactory.getBeneficiaryDAO();
 		try {
 			dao.updateBeneficiary(name,accNo);
